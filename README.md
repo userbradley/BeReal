@@ -1,13 +1,13 @@
 ## API Endpoints
 
-| URL                                                                  | Use                                           | Request type    | Example request               | 
-|----------------------------------------------------------------------|-----------------------------------------------|-----------------|-------------------------------|
-| `https://logs.browser-intake-datadoghq.com/api/v2/logs?ddsource=ios` | Application usage metrics                     | `post http/2.0` | See Datadog                   |
-| `https://mobile.bereal.com/api/feeds/friends`                        | Loads all the images that you're friends with | `Get HTTP/2.0`  | See `Friends`                 |
-| `https://mobile.bereal.com/api/terms`                                | Not sure yet                                  | `GET HTTP/2.0`  | <>                            |
-| `https://mobile.bereal.com/api/feeds/memories?limit=14` | Your memories | `GET HTTP/2.0   |                               |
-| `https://mobile.bereal.com/api/feeds/memories/video`  | Not sure, perhaps a future feature? | `GET HTTP/2.0`  |                               |
-| `https://api2.amplitude.com/` | User journy tracking | `POST HTTP/2.0 | See  [Amplitude](#-amplitude) |
+| URL                                                                  | Use                                           | Request type    | Example request              | 
+|----------------------------------------------------------------------|-----------------------------------------------|-----------------|------------------------------|
+| `https://logs.browser-intake-datadoghq.com/api/v2/logs?ddsource=ios` | Application usage metrics                     | `post http/2.0` | See Datadog                  |
+| `https://mobile.bereal.com/api/feeds/friends`                        | Loads all the images that you're friends with | `Get HTTP/2.0`  | See `Friends`                |
+| `https://mobile.bereal.com/api/terms`                                | Not sure yet                                  | `GET HTTP/2.0`  | <>                           |
+| `https://mobile.bereal.com/api/feeds/memories?limit=14` | Your memories | `GET HTTP/2.0   |                              |
+| `https://mobile.bereal.com/api/feeds/memories/video`  | Not sure, perhaps a future feature? | `GET HTTP/2.0`  |                              |
+| `https://api2.amplitude.com/` | User journy tracking | `POST HTTP/2.0 | See  [Amplitude](#amplitude) |
 
 
 ### Datadog 
