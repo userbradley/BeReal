@@ -18,13 +18,21 @@
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
 | `https://storage.bere.al/Photos/<uid>` | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage)                  | `GET HTTP/2.0`  |
 
+#### Posting a photo
+| URL                                                                                      | Use                                                 | Request type    |
+|------------------------------------------------------------------------------------------|-----------------------------------------------------|-----------------|
+| `https://us-central1-alexisbarreyat-bereal.cloudfunctions.net/sendCaptureInProgressPush` | Letting Bereal know you're taking a photo           | `POST HTTP/2.0` |
+| `https://firebasestorage.googleapis.com/v0/b/storage.bere.al/o/`                         | Uploads the photo to Firebase from what I can see   | `POST HTTP/2.0` |
+| `https://mobile.bereal.com/api/content/post`                                             | Finalizing the post, attaching location and retakes | `POST HTTP/2.0` |
+
 #### Feeds
-| URL                                                             | Use                                              | Request type   |
-|-----------------------------------------------------------------|--------------------------------------------------|----------------|
-| `https://mobile.bereal.com/api/feeds/memories?limit=<number>`   | Your memories                                    | `GET HTTP/2.0` |
-| `https://mobile.bereal.com/api/feeds/memories/video`            | Not sure, perhaps a future feature?              | `GET HTTP/2.0` |
-| `https://mobile.bereal.com/api/feeds/friends`                   | Loads all the images that you're friends with    | `GET HTTP/2.0` |
-| `	https://mobile.bereal.com/api/feeds/discovery?limit=<number>` | Feed of `discover` page - Limited by number(int) | `GET HTTP/2.0` |
+| URL                                                            | Use                                              | Request type   |
+|----------------------------------------------------------------|--------------------------------------------------|----------------|
+| `https://mobile.bereal.com/api/feeds/memories?limit=<number>`  | Your memories                                    | `GET HTTP/2.0` |
+| `https://mobile.bereal.com/api/feeds/memories/video`           | Not sure, perhaps a future feature?              | `GET HTTP/2.0` |
+| `https://mobile.bereal.com/api/feeds/friends`                  | Loads all the images that you're friends with    | `GET HTTP/2.0` |
+| `https://mobile.bereal.com/api/feeds/discovery?limit=<number>` | Feed of `discover` page - Limited by number(int) | `GET HTTP/2.0` |
+
 #### Relationships
 | URL                                                                                               | Use                                                                                                                     | Request type    |
 |---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
@@ -45,6 +53,8 @@
 | URL                                                                                               | Use                                                                                                                     | Request type    |
 |---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
 | `https://mobile.bereal.com/api/terms`                                                             | What Terms and conditions the user has accepted                                                                         | `GET HTTP/2.0`  |
+
+
 
 #### Other
 | URL                   | Use                                                       |
@@ -130,8 +140,8 @@ Below is an example, with PII removed.
     "lateInSeconds": 67,
     "isPublic": false,
     "location": {
-      "_latitude": 33.1253,
-      "_longitude": -96.8779
+      "_latitude": <>,
+      "_longitude": -<>
     },
     "retakeCounter": 0,
     "creationDate": {
@@ -399,5 +409,155 @@ This API returns information about the user, but their UID (Unique ID)
         "status": null
     },
     "username": "<>"
+}
+```
+
+### sendCaptureInProgressPush
+
+This is a cloud function that seems to push a message to pubsub on the BeReal side
+
+What it sends:
+
+```text
+{
+    "data": {
+        "photoURL": "Photos/<me>/profile/<me>-1655905537-profile-picture.jpg",
+        "topic": "<me>",
+        "userName": "<me>"
+    }
+}
+```
+
+Response 
+
+```text
+{
+    "result": "projects/alexisbarreyat-bereal/messages/7517087177659076139"
+}
+```
+
+### Firebase push
+
+Request 
+
+```text
+{
+    "cacheControl": "public,max-age=172800",
+    "contentType": "image/jpeg",
+    "metadata": {
+        "type": "bereal"
+    },
+    "name": "Photos/<me>/bereal/7c44d6e8-086b-4a18-b8b4-d3785f58cda8-1660122851.jpg"
+}
+```
+
+```text
+{
+    "bucket": "storage.bere.al",
+    "cacheControl": "public,max-age=172800",
+    "contentDisposition": "inline; filename*=utf-8''7c44d6e8-086b-4a18-b8b4-d3785f58cda8-1660122851-secondary.jpg",
+    "contentEncoding": "identity",
+    "contentType": "image/jpeg",
+    "crc32c": "rfGb7g==",
+    "downloadTokens": "551a5e87-a995-47dc-a108-13668abdecfa",
+    "etag": "CLzws8n3u/kCEAE=",
+    "generation": "1660122857011260",
+    "md5Hash": "f/wNKCMBarI56uGxAOX6jg==",
+    "metadata": {
+        "type": "bereal"
+    },
+    "metageneration": "1",
+    "name": "Photos/<me>/bereal/7c44d6e8-086b-4a18-b8b4-d3785f58cda8-1660122851-secondary.jpg",
+    "size": "563242",
+    "storageClass": "MULTI_REGIONAL",
+    "timeCreated": "2022-08-10T09:14:17.082Z",
+    "updated": "2022-08-10T09:14:17.082Z"
+}
+```
+
+### content/post
+
+This is the API endpoint bereal posts to when it's finalizing the post
+
+Request 
+
+```text
+{
+    "backCamera": {
+        "bucket": "storage.bere.al",
+        "height": 2000,
+        "path": "Photos/<me>/bereal/7c44d6e8-086b-4a18-b8b4-d3785f58cda8-1660122851.jpg",
+        "width": 1500
+    },
+    "frontCamera": {
+        "bucket": "storage.bere.al",
+        "height": 2000,
+        "path": "Photos/<me>/bereal/7c44d6e8-086b-4a18-b8b4-d3785f58cda8-1660122851-secondary.jpg",
+        "width": 1500
+    },
+    "isLate": true,
+    "isPublic": false,
+    "location": {
+        "latitude": <>>,
+        "longitude": <>>
+    },
+    "retakeCounter": 4,
+    "takenAt": "2022-08-10T09:14:11Z"
+}
+```
+
+Response
+
+```text
+{
+    "caption": null,
+    "comments": {
+        "sample": [],
+        "total": 0
+    },
+    "createdAt": "2022-08-10T09:14:17.603Z",
+    "id": "<>-YKzhel",
+    "isLate": true,
+    "lateInSeconds": 1425,
+    "location": {
+        "latitude": <>,
+        "longitude": <>
+    },
+    "moment": {
+        "id": "dr6O-8wHaE4xRgnxLpY9M",
+        "region": "europe-west"
+    },
+    "primary": {
+        "height": 2000,
+        "url": "https://storage.bere.al/Photos/<me>/bereal/7c44d6e8-086b-4a18-b8b4-d3785f58cda8-1660122851.jpg",
+        "width": 1500
+    },
+    "realmojis": {
+        "sample": [],
+        "total": 0
+    },
+    "retakeCounter": 4,
+    "screenshots": {
+        "sample": [],
+        "total": 0
+    },
+    "secondary": {
+        "height": 2000,
+        "url": "https://storage.bere.al/Photos/<me>/bereal/7c44d6e8-086b-4a18-b8b4-d3785f58cda8-1660122851-secondary.jpg",
+        "width": 1500
+    },
+    "takenAt": "2022-08-10T09:14:11.000Z",
+    "user": {
+        "id": "<me>",
+        "profilePicture": {
+            "height": 1000,
+            "url": "https://storage.bere.al/Photos/<me>/profile/<me>-1655905537-profile-picture.jpg",
+            "width": 1000
+        },
+        "username": "<>"
+    },
+    "visibility": [
+        "friends"
+    ]
 }
 ```
