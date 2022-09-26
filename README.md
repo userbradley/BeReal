@@ -71,6 +71,7 @@
 
 
 
+
 ### Get Usernames
 
 This seems to be the endpoint that gets called when you load the _discover_ page (eg: people that are not your _direct_ friends)
@@ -561,3 +562,9 @@ Response
     ]
 }
 ```
+
+
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/userbradley/BeReal.svg)](https://starchart.cc/userbradley/BeReal)
