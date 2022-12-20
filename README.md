@@ -192,8 +192,7 @@ You can see an example response from the API by looking at the [public.json](pub
 
 ## feeds/memories/video
 
-I think this may be a feature that is coming soon.
-No data is avalibe on this API
+2021 memories recaps video
 
 ```text
 {
