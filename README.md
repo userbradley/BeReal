@@ -1,13 +1,6 @@
 
 ## BeReal How it works ?
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
- 
-    <img src="https://bere.al/images/logos/bereal-twitter.png" alt="Logo" width="80" height="80">
- 
-
 
 ## API Endpoints
 
