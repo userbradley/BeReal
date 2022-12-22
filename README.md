@@ -4,9 +4,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://www.internetmatters.org/wp-content/uploads/2022/05/bereal-image.png">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+ 
+    <img src="https://bere.al/images/logos/bereal-twitter.png" alt="Logo" width="80" height="80">
+ 
 
 
 ## API Endpoints
