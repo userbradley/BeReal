@@ -1,3 +1,14 @@
+
+## BeReal How it works ?
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://www.internetmatters.org/wp-content/uploads/2022/05/bereal-image.png">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+
 ## API Endpoints
 
 ### Metric Collection
@@ -63,7 +74,7 @@
 | `tools.bereal.team`   | Probably internal tooling                                 | 
 | `auth.bereal.team`    | _assuming_ to be authentication services                  | 
 | `doc.bereal.team`     | Probably a custom URL for google docs  (Protected by IAP) | 
-| `webhooks.bereal.com` | No clue                                                   | 
+| `webhooks.bereal.com` | push data from user (app) to serveur (database)           | 
 
 
 ---
