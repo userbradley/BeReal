@@ -2,6 +2,37 @@
 
 This Repo contains all the endpoints that I was able to find from my Network wide SSL inspecting proxy.
 
+<!-- TOC -->
+* [BeReal](#bereal)
+  * [Endpoints](#endpoints)
+    * [Metric Collection](#metric-collection)
+    * [BeReal Application Specific requests](#bereal-application-specific-requests)
+      * [Storage](#storage)
+      * [Posting a photo](#posting-a-photo)
+      * [Feeds](#feeds)
+      * [Relationships](#relationships)
+      * [Person](#person)
+      * [Legal schmooz](#legal-schmooz)
+  * [Domains](#domains)
+  * [Application workflows](#application-workflows)
+    * [Get Usernames](#get-usernames)
+    * [feeds/friends](#feedsfriends)
+    * [feeds/discovery](#feedsdiscovery)
+  * [feeds/memories/video](#feedsmemoriesvideo)
+    * [feeds/memories](#feedsmemories)
+    * [Memories](#memories)
+    * [api/terms](#apiterms)
+    * [api/relationships/suggestions](#apirelationshipssuggestions)
+    * [api/relationships/friends](#apirelationshipsfriends)
+    * [relationships/friend-requests](#relationshipsfriend-requests)
+    * [relationships/friend-requests/received](#relationshipsfriend-requestsreceived)
+    * [relationships/friend-requests/sent](#relationshipsfriend-requestssent)
+    * [api/person/profiles/<uid>](#apipersonprofiles-uid)
+    * [sendCaptureInProgressPush](#sendcaptureinprogresspush)
+    * [Firebase push](#firebase-push)
+    * [content/post](#contentpost)
+  * [Stargazers over time](#stargazers-over-time)
+<!-- TOC -->
 
 ## Endpoints
 
