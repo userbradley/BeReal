@@ -20,7 +20,6 @@ This Repo contains all the endpoints that I was able to find from my Network wid
     * [feeds/discovery](#feedsdiscovery)
   * [feeds/memories/video](#feedsmemoriesvideo)
     * [feeds/memories](#feedsmemories)
-    * [Memories](#memories)
     * [api/terms](#apiterms)
     * [api/relationships/suggestions](#apirelationshipssuggestions)
     * [api/relationships/friends](#apirelationshipsfriends)
@@ -129,7 +128,6 @@ This Repo contains all the endpoints that I was able to find from my Network wid
 | `backup.bere.al`              | Backup GCS Storage                                                                      |
 | `sandbox-storage2.bere.al`    | Storage Sandbox                                                                         |
 | `sandbox-storage.bere.al`     | Storage Sandbox                                                                         |
-| `memories.bere.al`            | Holds all the recap videos on a GCS bucket called `bereal-us-central1-memories`         |
 | `dev.kiali.bereal.com`        | *DEV* Istio Service mesh console](https://kiali.io)                                     |
 | `prod.dashboard.bereal.com`   | Probably Grafana                                                                        |
 | `mobile.bereal.com`           | Not sure                                                                                |
@@ -331,30 +329,6 @@ This shows all your memories
 
 ```
 
-
-### Memories
-
-URL: https://memories.bere.al
-
-gsutil 
-
-```xml
-<ListBucketResult xmlns="http://doc.s3.amazonaws.com/2006-03-01">
- <Name>bereal-us-central1-memories</Name>
- <Prefix/>
- <Marker/>
-<NextMarker>memories/00PTiJYyyufuv0avD3xXkLxB5132/2022/6IJl3ZERaSSkw_vtnXSmr-1671132864404/memories.mp4</NextMarker>
-<IsTruncated>true</IsTruncated>
-<Contents>
-<Key>memories/0000pABPGQfrANSc0PUgqtLpIFC2/2022/TZu4wgu1osm-4BqlrYhg4-1671123012092/memories.mp4</Key>
-<Generation>1671123012436466</Generation>
-<MetaGeneration>1</MetaGeneration>
-<LastModified>2022-12-15T16:50:12.438Z</LastModified>
-<ETag>"1bad23eb7bfc54aa0be671ff30924c35"</ETag>
-<Size>26265297</Size>
-</Contents>
-</ListBucketResult>
-```
 ### api/terms
 
 Shows what terms and conditions the user has accepted
