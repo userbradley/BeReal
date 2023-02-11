@@ -4,14 +4,17 @@ This Repo contains all the endpoints that I was able to find from my Network wid
 
 <!-- TOC -->
 * [BeReal](#bereal)
+  * [Api Domain](#api-domain)
   * [Endpoints](#endpoints)
     * [Metric Collection](#metric-collection)
     * [BeReal Application Specific requests](#bereal-application-specific-requests)
       * [Storage](#storage)
-      * [Posting a photo](#posting-a-photo)
       * [Feeds](#feeds)
       * [Relationships](#relationships)
+      * [Search](#search)
+      * [Settings](#settings)
       * [Person](#person)
+      * [Posting a photo](#posting-a-photo)
       * [Legal schmooz](#legal-schmooz)
   * [Domains](#domains)
   * [Application workflows](#application-workflows)
@@ -33,138 +36,188 @@ This Repo contains all the endpoints that I was able to find from my Network wid
   * [Stargazers over time](#stargazers-over-time)
 <!-- TOC -->
 
+## Api Domain
+
+The current domain for the BeReal api is
+
+```
+https://mobile.bereal.com/api/
+```
+
+Any reference to something like `/feeds/` assumes you just go `https://mobile.bereal.com/api/feeds/`
+
 ## Endpoints
+
+The below contains an overview of the endpoints. 
 
 ### Metric Collection
 
-| URL                                                                                               | Use                                                                                                                     | Request type    |
-|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://logs.browser-intake-datadoghq.com/api/v2/logs?ddsource=ios`                              | Application usage metrics                                                                                               | `POST HTTP/2.0` |
-| `https://api2.amplitude.com/`                                                                     | User journey tracking                                                                                                   | `POST HTTP/2.0` |
-| `https://region1.app-measurement.com/a`                                                           | Firebase (I'm like 80% sure)                                                                                            | `POST HTTP/2.0` |
-| `https://api.onesignal.com/apps/91b217c4-7ad8-4fd1-a01c-f4ed5b2a4711/ios_params.js?player_id=<>>` | Push messaging (Probably the notification going off)                                                                    | `GET HTTP/2.0`  | 
-| `https://fcmtoken.googleapis.com/register`                                                        | [Fibebase Messging](https://firebase.google.com/docs/cloud-messaging) (maybe also for push notifications, but authing?) | `POST HTTP/2.0` |
-| `https://firebaselogging-pa.googleapis.com/v1/firelog/legacy/batchlog`                            | Firebase Logging                                                                                                        | `POST HTTP/2.0` |
+| URL                                                                                               | Use                                                                                                                      | Request type    |
+|---------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|-----------------|
+| `https://logs.browser-intake-datadoghq.com/api/v2/logs?ddsource=ios`                              | Application usage metrics                                                                                                | `POST HTTP/2.0` |
+| `https://api2.amplitude.com/`                                                                     | User journey tracking                                                                                                    | `POST HTTP/2.0` |
+| `https://region1.app-measurement.com/a`                                                           | Firebase (I'm like 80% sure)                                                                                             | `POST HTTP/2.0` |
+| `https://api.onesignal.com/apps/91b217c4-7ad8-4fd1-a01c-f4ed5b2a4711/ios_params.js?player_id=<>>` | Push messaging (Probably the notification going off)                                                                     | `GET HTTP/2.0`  | 
+| `https://fcmtoken.googleapis.com/register`                                                        | [Firebase Messaging](https://firebase.google.com/docs/cloud-messaging) (maybe also for push notifications, but authing?) | `POST HTTP/2.0` |
+| `https://firebaselogging-pa.googleapis.com/v1/firelog/legacy/batchlog`                            | Firebase Logging                                                                                                         | `POST HTTP/2.0` |
 
 ### BeReal Application Specific requests
 
-#### Storage
+
+#### Storage 
 | URL                                    | Use                                                                                                                     | Request type    |
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
 | `https://storage.bere.al/Photos/<uid>` | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage)                  | `GET HTTP/2.0`  |
 
-#### Posting a photo
-| URL                                                                                      | Use                                                 | Request type    |
-|------------------------------------------------------------------------------------------|-----------------------------------------------------|-----------------|
-| `https://us-central1-alexisbarreyat-bereal.cloudfunctions.net/sendCaptureInProgressPush` | Letting Bereal know you're taking a photo           | `POST HTTP/2.0` |
-| `https://firebasestorage.googleapis.com/v0/b/storage.bere.al/o/`                         | Uploads the photo to Firebase from what I can see   | `POST HTTP/2.0` |
-| `https://mobile.bereal.com/api/content/post`                                             | Finalizing the post, attaching location and retakes | `POST HTTP/2.0` |
-
 #### Feeds
+
+
 | URL                                                            | Use                                              | Request type   |
 |----------------------------------------------------------------|--------------------------------------------------|----------------|
+| `https://mobile.bereal.com/api/feeds/discovery?limit=<number>` | Feed of `discover` page - Limited by number(int) | `GET HTTP/2.0` |
 | `https://mobile.bereal.com/api/feeds/memories?limit=<number>`  | Your memories                                    | `GET HTTP/2.0` |
 | `https://mobile.bereal.com/api/feeds/memories/video`           | Not sure, perhaps a future feature?              | `GET HTTP/2.0` |
 | `https://mobile.bereal.com/api/feeds/friends`                  | Loads all the images that you're friends with    | `GET HTTP/2.0` |
-| `https://mobile.bereal.com/api/feeds/discovery?limit=<number>` | Feed of `discover` page - Limited by number(int) | `GET HTTP/2.0` |
 
 #### Relationships
-| URL                                                                                               | Use                                                                                                                     | Request type    |
-|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://mobile.bereal.com/api/relationships/friends`                                             | List of friends you have                                                                                                | `GET HTTP/2.0`  |
-| `https://mobile.bereal.com/api/relationships/friend-requests`                                     | Makes a friend request                                                                                                  | `POST HTTP/2.0` |
-| `https://mobile.bereal.com/api/relationships/friend-requests/sent`                                | List of friend requests sent                                                                                            | `GET HTTP/2.0`  |
-| `https://mobile.bereal.com/api/relationships/friend-requests/received`                            | List of friend requests received                                                                                        | `GET HTTP/2.0`  |
-| `https://mobile.bereal.com/api/relationships/suggestions`                                         | Users you _may know_                                                                                                    | `GET HTTP/2.0`  |
+
+
+| URL                                                                    | Use                                                           | Request type    |
+|------------------------------------------------------------------------|---------------------------------------------------------------|-----------------|
+| `https://mobile.bereal.com/api/relationships/contacts`                 | Sends a hashed list of phone numbers to work out who you know | `POST HTTP/2.0` |
+| `https://mobile.bereal.com/api/relationships/friends`                  | List of friends you                                           | `GET HTTP/2.0`  |
+| `https://mobile.bereal.com/api/relationships/friend-requests`          | Makes a friend                                                | `POST HTTP/2.0` |
+| `https://mobile.bereal.com/api/relationships/friend-requests/sent`     | List of friend requests                                       | `GET HTTP/2.0`  |
+| `https://mobile.bereal.com/api/relationships/friend-requests/received` | List of friend requests                                       | `GET HTTP/2.0`  |
+| `https://mobile.bereal.com/api/relationships/suggestions`              | Users you _may know_                                          | `GET HTTP/2.0`  |
+
+#### Search
+
+| URL                                            | Use                                                   | Request type   |
+|------------------------------------------------|-------------------------------------------------------|----------------|
+| `https://mobile.bereal.com/api/search/profile` | Searches based on full name or partial name of a user | `GET HTTP/2.0` | 
+
+#### Settings
+
+| URL                                                        | Use                                                               | Request type    |
+|------------------------------------------------------------|-------------------------------------------------------------------|-----------------|
+| `https://mobile.bereal.com/api/settings`                   | Retrieves settings for the app, both global and user              | `GET HTTP/2.0`  |
+| `https://mobile.bereal.com/api/settings/notification-push` | Gets user preferences on push notifications                       | `GET HTTP/2.0`  | 
+| `https://mobile.bereal.com/api/parental-consent-request`   | Creates a request for parental consent if user is under 13 in EEZ | `POST HTTP/2.0` |
+
 
 #### Person
-| URL                                                                         | Use                                                                                         | Request type    |
-|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|-----------------|
-| `https://us-central1-alexisbarreyat-bereal.cloudfunctions.net/getUserNames` | Gets usernames for public users it seems. Was only called when I opened the _discover_ page | `POST HTTP/2.0` |
-| `https://mobile.bereal.com/api/person/profiles/<uid>`                       | Shows information about the user by ID                                                      | `GET HTTP/2.0`  |
+
+
+| URL                                                                         | Use                                                                                                         | Request type              |
+|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|---------------------------|
+| `https://us-central1-alexisbarreyat-bereal.cloudfunctions.net/getUserNames` | Gets usernames for public users it seems. Was only called when I opened the _discover_ page                 | `POST HTTP/2.0`           |
+| `https://mobile.bereal.com/api/person/realmojis/upload-url`                 | Gets [GCS Signed URL](https://cloud.google.com/storage/docs/access-control/signed-urls) for realmoji upload | `GET HTTP/2.0`            |
+| `https://mobile.bereal.com/api/person/me`                                   | Gets info about your account                                                                                | `GET HTTP/2.0`            |
+| `https://mobile.bereal.com/api/person/profile`                              | Updates and gets info about you!                                                                            | `POST/PATCH/GET HTTP/2.0` |
+| `https://mobile.bereal.com/api/person/me/username`                          | Updates your username                                                                                       | `PATCH HTTP/2.0`          |
+
+
+#### Posting a photo
+
+
+| URL                                                                                      | Use                                                                                                    | Request type    |
+|------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|-----------------|
+| `https://us-central1-alexisbarreyat-bereal.cloudfunctions.net/sendCaptureInProgressPush` | Letting BeReal know you're taking a photo                                                              | `POST HTTP/2.0` |
+| `https://firebasestorage.googleapis.com/v0/b/storage.bere.al/o/`                         | Uploads the photo to Firebase from what I can see                                                      | `POST HTTP/2.0` |
+| `https://mobile.bereal.com/api/content/post`                                             | Finalizing the post, attaching location and retakes                                                    | `POST HTTP/2.0` |
+| `https://mobile.bereal.com/content/posts/upload-url`                                     | Gets [GCS Signed URL](https://cloud.google.com/storage/docs/access-control/signed-urls) for uploads    | `GET HTTP/2.0`  |
+| `https://mobile.bereal.com/content/posts/me`                                             | Gets your post                                                                                         | `GET HTTP/2.0`  |
+| `https://mobile.bereal.com/content/posts/caption`                                        | Creates a caption on your post                                                                         | `POST HTTP/2.0` |
+| `https://mobile.bereal.com/content/posts/visibility`                                     | Updates the visibility of a BeReal                                                                     | `GET HTTP/2.0`  |
+| `https://mobile.bereal.com/content/comments`                                             | Gets comments and creates them                                                                         | `GET HTTP/2.0`  |
+| `https://mobile.bereal.com/content/realmojis`                                            | Gets a list of realmojis                                                                               | `GET HTTP/2.0`  |
+| `https://mobile.bereal.com/content/realmojis/upload-url`                                 | Gets [GCS Signed URL](https://cloud.google.com/storage/docs/access-control/signed-urls) for Real Mojis | `GET HTTP/2.0`  |
+| `https://mobile.bereal.com/content/screenshots`                                          | Updates when you screenshot a post                                                                     | `POST HTTP/2.0` |
+| `https://mobile.bereal.com/content/screenshots/me`                                       | Gets list of users who screenshot?                                                                     | `GET HTTP/2.0`  |
 
 
 #### Legal schmooz
-| URL                                                                                               | Use                                                                                                                     | Request type    |
-|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://mobile.bereal.com/api/terms`                                                             | What Terms and conditions the user has accepted                                                                         | `GET HTTP/2.0`  |
+| URL                                           | Use                                                                                                                     | Request type    |
+|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
+| `https://mobile.bereal.com/api/terms/privacy` | What Terms and conditions the user has accepted                                                                         | `GET HTTP/2.0`  |
 
 ## Domains
 
 
-| URL                           | Use                                                                                     |
-|-------------------------------|-----------------------------------------------------------------------------------------|
-| `status.bereal.team`          | Simple text based status page of services                                               |
-| `tools.bereal.team`           | Probably internal tooling                                                               | 
-| `auth.bereal.team`            | _assuming_ to be authentication services                                                | 
-| `doc.bereal.team`             | Probably a custom URL for google docs  (Protected by IAP)                               |
-| `dev.argocd.bereal.team`      | Development [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) deployment              |
-| `webhooks.bereal.team`        | Most likely incoming webhooks to the BeReal systems                                     |
-| `status.bereal.team`          | Text based status page                                                                  |
-| `tools.bereal.team`           | Internal tooling                                                                        |
-| `dev.mobile.bereal.team`      | Not sure                                                                                |
-| `dev.webhooks.bereal.team`    | *DEV* Development webhooks                                                              |
-| `grafana.bereal.team`         | Grafana system, dashboards and alerting                                                 |
-| `dev.doc.bereal.team`         | *DEV* Most likely internal Documentation                                                |
-| `dev.grafana.bereal.team`     | *DEV* Grafana system, dashboards and alerting                                           |
-| `kiali.bereal.team`           | [Istio Service mesh console](https://kiali.io)                                          |
-| `bereal.team    `             | Apex Domain                                                                             |
-| `dev.tools.bereal.team`       | *DEV* Internal Tooling                                                                  |
-| `mobile.bereal.team`          |                                                                                         |
-| `dev.status.bereal.team`      | *DEV* Status page                                                                       |
-| `argocd.bereal.team`          | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) Deployment                          |
-| `auth.bereal.team`            | Authentication systems                                                                  |
-| `doc.bereal.team`             | Most likely internal Documentation                                                      |
-| `dev.auth.bereal.team`        | *DEV* Authentication systems                                                            |
-| `dev.notific.bereal.team`     | *DEV* Misspelt   notification system                                                    |
-| `bere.al`                     | Website                                                                                 |
-| `storage2.bere.al`            | GCS Storage                                                                             |
-| `app.bere.al`                 | Website too                                                                             |
-| `test.bere.al`                | Test website                                                                            |
-| `www.bere.al`                 | Website                                                                                 |
-| `intra.bere.al`               | BeReal Ambassadors site                                                                 |
-| `jobs.bere.al`                | BeReal job postings                                                                     |
-| `storage.bere.al`             | GCS Storage                                                                             |
-| `backup.bere.al`              | Backup GCS Storage                                                                      |
-| `sandbox-storage2.bere.al`    | Storage Sandbox                                                                         |
-| `sandbox-storage.bere.al`     | Storage Sandbox                                                                         |
-| `dev.kiali.bereal.com`        | *DEV* Istio Service mesh console](https://kiali.io)                                     |
-| `prod.dashboard.bereal.com`   | Probably Grafana                                                                        |
-| `mobile.bereal.com`           | Not sure                                                                                |
-| `api-fasterstore.bereal.com`  | _probably_ Ecommerce management platforem [Faster Stores](https://www.fasterstores.com) |
-| `dev.mobile.bereal.com`       | Not sure                                                                                |
-| `bereal.com`                  | Website                                                                                 |
-| `dev.grafana.bereal.com`      | *DEV* Grafana system, dashboards and alerting                                           |
-| `webhooks.bereal.com`         | Most likely incoming webhooks to the BeReal systems                                     |
-| `push.bereal.com`             |                                                                                         |
-| `prod.fasterstore.bereal.com` | _probably_ Ecommerce management platforem [Faster Stores](https://www.fasterstores.com) |
-| `prod.kiali.bereal.com`       | Production [Istio Service mesh console](https://kiali.io)                               |
-| `gke-test.bereal.com`         | Probably testing GKE                                                                    |
-| `test.fasterstore.bereal.com` | _probably_ Ecommerce management platforem [Faster Stores](https://www.fasterstores.com) |
-| `dev.tools.bereal.com`        | *DEV* Internall tooling                                                                 |
-| `all.argocd.bereal.com`       | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) Deployment                          |
-| `dev.push.bereal.com`         | Not sure                                                                                |
-| `api.bereal.com`              | BeReal API Endpoint                                                                     |
-| `dev.function.bereal.com`     | Probably cloud function domain                                                          |
-| `dev.notification.bereal.com` | Probably Notification dev platform                                                      |
-| `notification.bereal.com`     |                                                                                         |
-| `function.bereal.com`         | Probably cloud function domain                                                          |
-| `auth.bereal.com`             | Internal Authentication I would think                                                   |
-| `dev.auth.bereal.com`         | *DEV*                  Internal Authentication I would think                            |
-| `test.graphapi.bereal.com`    | Graph-api testing                                                                       |
-| `notif.bereal.com`            | Probably notification infrastructure                                                    |
-| `dev.traefik.bereal.com`      | [Traefik](https://doc.traefik.io/traefik/) Proxy for GKE                                |
-| `cdn-eu.bereal.com`           | EU CND                                                                                  |
-| `dev.argocd.bereal.com`       | Dev   [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) Deployment                    |
-| `help.bereal.com`             | Help Pages                                                                              |
-| `grafana.bereal.com`          | Grafana                                                                                 |
-| `dev.webhooks.bereal.com`     | Dev incoming webhooks to BeReal                                                         |
-| `api-dev.bereal.com`          | Dev API                                                                                 |
-| `dev.graphapi.bereal.com`     | Dev Graphapi                                                                            |
-| `argocd.bereal.com`           | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) Deployment                          |
-| `tools.bereal.com`            | Internal tooling                                                                        |
-| `jobs.bereal.com`             | Job postings                                                                            |
-| `cdn.eu.bereal.com`           | EU CDN                                                                                  |
+| URL                           | Use                                                                                    |
+|-------------------------------|----------------------------------------------------------------------------------------|
+| `status.bereal.team`          | Simple text based status page of services                                              |
+| `tools.bereal.team`           | Probably internal tooling                                                              | 
+| `auth.bereal.team`            | _assuming_ to be authentication services                                               | 
+| `doc.bereal.team`             | Probably a custom URL for google docs  (Protected by IAP)                              |
+| `dev.argocd.bereal.team`      | Development [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) deployment             |
+| `webhooks.bereal.team`        | Most likely incoming webhooks to the BeReal systems                                    |
+| `status.bereal.team`          | Text based status page                                                                 |
+| `tools.bereal.team`           | Internal tooling                                                                       |
+| `dev.mobile.bereal.team`      | Not sure                                                                               |
+| `dev.webhooks.bereal.team`    | *DEV* Development webhooks                                                             |
+| `grafana.bereal.team`         | Grafana system, dashboards and alerting                                                |
+| `dev.doc.bereal.team`         | *DEV* Most likely internal Documentation                                               |
+| `dev.grafana.bereal.team`     | *DEV* Grafana system, dashboards and alerting                                          |
+| `kiali.bereal.team`           | [Istio Service mesh console](https://kiali.io)                                         |
+| `bereal.team    `             | Apex Domain                                                                            |
+| `dev.tools.bereal.team`       | *DEV* Internal Tooling                                                                 |
+| `mobile.bereal.team`          |                                                                                        |
+| `dev.status.bereal.team`      | *DEV* Status page                                                                      |
+| `argocd.bereal.team`          | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) Deployment                         |
+| `auth.bereal.team`            | Authentication systems                                                                 |
+| `doc.bereal.team`             | Most likely internal Documentation                                                     |
+| `dev.auth.bereal.team`        | *DEV* Authentication systems                                                           |
+| `dev.notific.bereal.team`     | *DEV* Misspell   notification system                                                   |
+| `bere.al`                     | Website                                                                                |
+| `storage2.bere.al`            | GCS Storage                                                                            |
+| `app.bere.al`                 | Website too                                                                            |
+| `test.bere.al`                | Test website                                                                           |
+| `www.bere.al`                 | Website                                                                                |
+| `intra.bere.al`               | BeReal Ambassadors site                                                                |
+| `jobs.bere.al`                | BeReal job postings                                                                    |
+| `storage.bere.al`             | GCS Storage                                                                            |
+| `backup.bere.al`              | Backup GCS Storage                                                                     |
+| `sandbox-storage2.bere.al`    | Storage Sandbox                                                                        |
+| `sandbox-storage.bere.al`     | Storage Sandbox                                                                        |
+| `dev.kiali.bereal.com`        | *DEV* Istio Service mesh console](https://kiali.io)                                    |
+| `prod.dashboard.bereal.com`   | Probably Grafana                                                                       |
+| `mobile.bereal.com`           | Not sure                                                                               |
+| `api-fasterstore.bereal.com`  | _probably_ Ecommerce management platform [Faster Stores](https://www.fasterstores.com) |
+| `dev.mobile.bereal.com`       | Not sure                                                                               |
+| `bereal.com`                  | Website                                                                                |
+| `dev.grafana.bereal.com`      | *DEV* Grafana system, dashboards and alerting                                          |
+| `webhooks.bereal.com`         | Most likely incoming webhooks to the BeReal systems                                    |
+| `push.bereal.com`             |                                                                                        |
+| `prod.fasterstore.bereal.com` | _probably_ Ecommerce management platform [Faster Stores](https://www.fasterstores.com) |
+| `prod.kiali.bereal.com`       | Production [Istio Service mesh console](https://kiali.io)                              |
+| `gke-test.bereal.com`         | Probably testing GKE                                                                   |
+| `test.fasterstore.bereal.com` | _probably_ Ecommerce management platform [Faster Stores](https://www.fasterstores.com) |
+| `dev.tools.bereal.com`        | *DEV* Internal tooling                                                                 |
+| `all.argocd.bereal.com`       | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) Deployment                         |
+| `dev.push.bereal.com`         | Not sure                                                                               |
+| `api.bereal.com`              | BeReal API Endpoint                                                                    |
+| `dev.function.bereal.com`     | Probably cloud function domain                                                         |
+| `dev.notification.bereal.com` | Probably Notification dev platform                                                     |
+| `notification.bereal.com`     |                                                                                        |
+| `function.bereal.com`         | Probably cloud function domain                                                         |
+| `auth.bereal.com`             | Internal Authentication I would think                                                  |
+| `dev.auth.bereal.com`         | *DEV*                  Internal Authentication I would think                           |
+| `test.graphapi.bereal.com`    | Graph-api testing                                                                      |
+| `notif.bereal.com`            | Probably notification infrastructure                                                   |
+| `dev.traefik.bereal.com`      | [Traefik](https://doc.traefik.io/traefik/) Proxy for GKE                               |
+| `cdn-eu.bereal.com`           | EU CND                                                                                 |
+| `dev.argocd.bereal.com`       | Dev   [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) Deployment                   |
+| `help.bereal.com`             | Help Pages                                                                             |
+| `grafana.bereal.com`          | Grafana                                                                                |
+| `dev.webhooks.bereal.com`     | Dev incoming webhooks to BeReal                                                        |
+| `api-dev.bereal.com`          | Dev API                                                                                |
+| `dev.graphapi.bereal.com`     | Dev Graph-api                                                                          |
+| `argocd.bereal.com`           | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) Deployment                         |
+| `tools.bereal.com`            | Internal tooling (now Deprecated)                                                      |
+| `jobs.bereal.com`             | Job postings                                                                           |
+| `cdn.eu.bereal.com`           | EU CDN                                                                                 |
 ---
 
 ## Application workflows
@@ -173,7 +226,7 @@ This Repo contains all the endpoints that I was able to find from my Network wid
 
 ### Get Usernames
 
-This seems to be the endpoint that gets called when you load the _discover_ page (eg: people that are not your _direct_ friends)
+This seems to be the endpoint that gets called when you load the _Discover_ page (eg: people that are not your _direct_ friends)
 Post to URL
 
 _Requires Authentication_
