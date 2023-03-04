@@ -175,7 +175,7 @@ The below contains an overview of the endpoints.
 | `app.bere.al`                 | Website too                                                                            |
 | `test.bere.al`                | Test website                                                                           |
 | `www.bere.al`                 | Website                                                                                |
-| `intra.bere.al`               | BeReal Ambassadors site                                                                |
+| `intra.bere.al`               | BeReal Ambassadors site (now Deprecated)                                               |
 | `jobs.bere.al`                | BeReal job postings                                                                    |
 | `storage.bere.al`             | GCS Storage                                                                            |
 | `backup.bere.al`              | Backup GCS Storage                                                                     |
