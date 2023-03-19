@@ -65,12 +65,12 @@ The below contains an overview of the endpoints.
 
 
 #### Storage 
-| URL                                    | Use                                                                                                                     | Request type    |
-|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://storage.bere.al/Photos/<uid>` | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage)                  | `GET HTTP/2.0`  |
-
-| `https://bereal-us-central1-memories.storage.googleapis.com ` | Memories recap video storage 
-         | `GET HTTP/2.0`  |
+| URL                                                           | Use                                                                                                                     | Request type    |
+|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
+| `https://storage.bere.al/Photos/<uid>`                        | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage)                  | `GET HTTP/2.0`  |
+| `https://bereal-us-central1-memories.storage.googleapis.com ` | Memories 2022 recap video storage                                                                                       | `GET HTTP/2.0`  |                                                                            | `GET HTTP/2.0`  |
+                                                                                                                                                                                      
+  
 #### Feeds
 
 
