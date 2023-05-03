@@ -65,10 +65,12 @@ The below contains an overview of the endpoints.
 
 
 #### Storage 
-| URL                                    | Use                                                                                                                     | Request type    |
-|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://storage.bere.al/Photos/<uid>` | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage)                  | `GET HTTP/2.0`  |
-
+| URL                                                           | Use                                                                                                                     | Request type    |
+|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
+| `https://storage.bere.al/Photos/<uid>`                        | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage)                  | `GET HTTP/2.0`  |
+| `https://bereal-us-central1-memories.storage.googleapis.com ` | Memories 2022 recap video storage                                                                                       | `GET HTTP/2.0`  |                                                                            | `GET HTTP/2.0`  |
+                                                                                                                                                                                      
+  
 #### Feeds
 
 
@@ -175,7 +177,7 @@ The below contains an overview of the endpoints.
 | `app.bere.al`                 | Website too                                                                            |
 | `test.bere.al`                | Test website                                                                           |
 | `www.bere.al`                 | Website                                                                                |
-| `intra.bere.al`               | BeReal Ambassadors site                                                                |
+| `intra.bere.al`               | BeReal Ambassadors site (now Deprecated)                                               |
 | `jobs.bere.al`                | BeReal job postings                                                                    |
 | `storage.bere.al`             | GCS Storage                                                                            |
 | `backup.bere.al`              | Backup GCS Storage                                                                     |
