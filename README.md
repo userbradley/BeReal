@@ -1,3 +1,4 @@
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Logo-BeReal.png" width="732" alt="Bereal Application">
 # BeReal
 
 This Repo contains all the endpoints that I was able to find from my Network wide SSL inspecting proxy.
@@ -144,6 +145,14 @@ The below contains an overview of the endpoints.
 |-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
 | `https://mobile.bereal.com/api/terms/privacy` | What Terms and conditions the user has accepted                                                                         | `GET HTTP/2.0`  |
 
+#### Help Section
+| URL                                                           | Use                                                                                                          | Request type    |
+|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|-----------------|
+| `https://berealapp.zendesk.com/api/private/mobile_sdk/settings/id.json`  | Where the user send message to the help service   [Bereal use Zendesk](https://www.zendesk.fr)    | `GET HTTP/2.0`  |
+| `https://berealapp.zendesk.com/attachments/token/ID/?name=ID.jpeg`       | Where the user Photo is stored (help message)                                                     | `GET HTTP/2.0`  |
+                  
+                                                                                                                                                                                      
+  
 ## Domains
 
 
@@ -346,7 +355,7 @@ You can see an example response from the API by looking at the [public.json](pub
 
 ## feeds/memories/video
 
-2021 memories recaps video
+2021 and 2022 memories recaps video
 
 ```text
 {
@@ -716,7 +725,42 @@ Response
     ]
 }
 ```
+### Metric Collection
+```
+{
+        "_dd": {
+            "device": {
+                "architecture": "arm64e"
+            }
+        },
+        "date": "2023-05-22T17:39:51.607Z",
+        "ddtags": "env:prod,version:1.1.2",
+        "logger.name": "AlexisBarreyat.BeReal",
+        "logger.thread_name": "main",
+        "logger.version": "1.17.0",
+        "message": "[UploadPostWorker] restarting upload",
+        "network.client.available_interfaces": [
+            "cellular"
+        ],
+        "network.client.is_constrained": false,
+        "network.client.is_expensive": true,
+        "network.client.reachability": "yes",
+        "network.client.sim_carrier.allows_voip": true,
+        "network.client.sim_carrier.iso_country": "--",
+        "network.client.sim_carrier.name": "--",
+        "network.client.sim_carrier.technology": "LTE",
+        "network.client.supports_ipv4": true,
+        "network.client.supports_ipv6": true,
+        "service": "AlexisBarreyat.BeReal",
+        "status": "info",
+        "usr.id": "ID",
+        "usr.region": "europe-west",
+        "version": "1.1.2",
+        "version.build": "9854"
+    },
 
+
+```
 
 
 ## Stargazers over time
