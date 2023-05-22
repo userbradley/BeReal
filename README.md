@@ -1,5 +1,5 @@
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Logo-BeReal.png" width="32" alt="Bereal Application">
 # BeReal
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Logo-BeReal.png" width="90" alt="Bereal Application">
 
 This Repo contains all the endpoints that I was able to find from my Network wide SSL inspecting proxy.
 
