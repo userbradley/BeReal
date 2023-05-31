@@ -22,7 +22,7 @@ This Repo contains all the endpoints that I was able to find from my Network wid
     * [Get Usernames](#get-usernames)
     * [feeds/friends](#feedsfriends)
     * [feeds/discovery](#feedsdiscovery)
-  * [feeds/memories/video](#feedsmemoriesvideo)
+    * [feeds/memories/video](#feedsmemoriesvideo)
     * [feeds/memories](#feedsmemories)
     * [api/terms](#apiterms)
     * [api/relationships/suggestions](#apirelationshipssuggestions)
@@ -353,7 +353,7 @@ This is the `Discovery` page, where you can see people that are not your friends
 
 You can see an example response from the API by looking at the [public.json](public.json)
 
-## feeds/memories/video
+### feeds/memories/video
 
 2021 and 2022 memories recaps video
 
