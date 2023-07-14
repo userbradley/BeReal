@@ -80,7 +80,7 @@ The below contains an overview of the endpoints.
 | `https://mobile.bereal.com/api/feeds/discovery?limit=<number>` | Feed of `discover` page - Limited by number(int) | `GET HTTP/2.0` |
 | `https://mobile.bereal.com/api/feeds/memories?limit=<number>`  | Your memories                                    | `GET HTTP/2.0` |
 | `https://mobile.bereal.com/api/feeds/memories/video`           | Not sure, perhaps a future feature?              | `GET HTTP/2.0` |
-| `https://mobile.bereal.com/api/feeds/friends`                  | Loads all the images that you're friends with    | `GET HTTP/2.0` |
+| `https://mobile.bereal.com/api/feeds/friends-v1`               | Loads all the images that you're friends with    | `GET HTTP/2.0` |
 
 #### Relationships
 
@@ -274,77 +274,147 @@ Response (Un-authenticated)
 }
 ```
 
-### feeds/friends
-When the app opens, it makes a call to `api/feed/friends`
+### feeds/friends-v1
+When the app opens, it makes a call to `api/feed/friends-v1`
 
 Below is an example, with PII removed. 
 ```text
-[
-  {
-    "id": "<>>",
-    "notificationID": "<>>",
-    "ownerID": "<>>",
-    "userName": "<>>",
+{
+  "userPosts": {
     "user": {
-      "id": "<>",
-      "username": "<>"
-    },
-    "mediaType": "late",
-    "region": "us-central",
-    "bucket": "storage.bere.al",
-    "photoURL": "https://storage.bere.al/Photos/<>/bereal/f822aa7a-3b0c-495f-b5bd-a4250a465083-1659997174.jpg",
-    "imageWidth": 1500,
-    "imageHeight": 2000,
-    "secondaryPhotoURL": "https://storage.bere.al/Photos/<>/bereal/f822aa7a-3b0c-495f-b5bd-a4250a465083-1659997174-secondary.jpg",
-    "secondaryImageHeight": 2000,
-    "secondaryImageWidth": 1500,
-    "members": [
-      "<>"
-    ],
-    "lateInSeconds": 67,
-    "isPublic": false,
-    "location": {
-      "_latitude": <>,
-      "_longitude": -<>
-    },
-    "retakeCounter": 0,
-    "creationDate": {
-      "_seconds": 1659997238,
-      "_nanoseconds": 684000000
-    },
-    "updatedAt": 1660002563356,
-    "takenAt": {
-      "_seconds": 1659997174,
-      "_nanoseconds": 0
-    },
-    "comment": [],
-    "realMojis": [
-      {
-        "id": "-j-<>>",
-        "uid": "<>>",
-        "userName": "<>>",
-        "user": {
-          "id": "<>>",
-          "username": "<>>",
-          "profilePicture": {
-            "height": 1000,
-            "width": 1000,
-            "url": "https://storage.bere.al/cdn-cgi/image/width=200,height=200/Photos/<>/profile/<>-1658600169-profile-picture.jpg"
-          }
-        },
-        "emoji": "😍",
-        "type": "heartEyes",
-        "uri": "https://storage.bere.al/Photos/<>/realmoji/<>-realmoji-heartEyes-1659046828.jpg",
-        "date": {
-          "_seconds": 1660002563,
-          "_nanoseconds": 350000000
-        }
+      "id": "[REDACTED]",
+      "username": "[REDACTED]",
+      "profilePicture": {
+        "url": "https://cdn.bereal.network/Photos/[REDACTED]/profile/[REDACTED]",
+        "width": 999,
+        "height": 999
       }
-    ],
-    "screenshots": [],
-    "screenshotsV2": []
+    },
+    "region": "us-central",
+    "momentId": "L1O8S_Tbph2fpEeuoSWcv",
+    "posts": [
+      {
+        "id": "-PGe3UUH4wsDg0ttqc7G-",
+        "visibility": ["friends"],
+        "primary": {
+          "url": "https://cdn.bereal.network/Photos/[REDACTED]/post/[REDACTED]",
+          "width": 2000,
+          "height": 1500
+        },
+        "secondary": {
+          "url": "https://cdn.bereal.network/Photos/[REDACTED]/post/[REDACTED]",
+          "width": 2000,
+          "height": 1500
+        },
+        "caption": "I love my tortilla blanky 🥰",
+        "retakeCounter": 0,
+        "lateInSeconds": 16110,
+        "isLate": true,
+        "isMain": true,
+        "realMojis": [
+          {
+            "id": "Jn8tDy3wwwJ197BHr7lJs",
+            "user": {
+              "id": "[REDACTED]",
+              "username": "[REDACTED]",
+              "profilePicture": {
+                "url": "https://cdn.bereal.network/Photos/[REDACTED]/profile/[REDACTED]",
+                "width": 1000,
+                "height": 1000
+              }
+            },
+            "media": {
+              "url": "https://cdn.bereal.network/Photos/[REDACTED]/realmoji/[REDACTED]",
+              "width": 500,
+              "height": 500
+            },
+            "type": "up",
+            "emoji": "👍",
+            "isInstant": false,
+            "postedAt": "2023-07-14T02:47:15.850Z"
+          }
+        ],
+        "comments": [],
+        "unblurCount": 0,
+        "takenAt": "2023-07-14T02:46:26.520Z",
+        "creationDate": "2023-07-14T02:46:26.657Z",
+        "updatedAt": "2023-07-14T02:46:26.657Z"
+      }
+    ]
   },
-]
+  "friendsPosts": [
+    {
+      "user": {
+        "id": "[REDACTED]",
+        "username": "[REDACTED]",
+        "profilePicture": {
+          "url": "https://cdn.bereal.network/Photos/[REDACTED]/profile/[REDACTED]",
+          "width": 1000,
+          "height": 1000
+        }
+      },
+      "momentId": "L1O8S_Tbph2fpEeuoSWcv",
+      "region": "us-central",
+      "moment": {
+        "id": "L1O8S_Tbph2fpEeuoSWcv",
+        "region": "us-central"
+      },
+      "posts": [
+        {
+          "id": "HLAxwJatn4OZFmLieuM8N",
+          "primary": {
+            "url": "https://cdn.bereal.network/Photos/[REDACTED]/post/[REDACTED]",
+            "width": 1500,
+            "height": 2000
+          },
+          "secondary": {
+            "url": "https://cdn.bereal.network/Photos/[REDACTED]/post/[REDACTED]",
+            "width": 1500,
+            "height": 2000
+          },
+          "location": {
+            "latitude": 43.079,
+            "longitude": -123.5797
+          },
+          "retakeCounter": 1,
+          "lateInSeconds": 0,
+          "isLate": false,
+          "isMain": true,
+          "takenAt": "2023-07-13T22:16:41.468Z",
+          "realMojis": [
+            {
+              "id": "qPIyfQuWbdr1Ma4bwDE1N",
+              "user": {
+                "id": "[REDACTED]",
+                "username": "[REDACTED]",
+                "profilePicture": {
+                  "url": "https://cdn.bereal.network/Photos/[REDACTED]/profile/[REDACTED]",
+                  "width": 1000,
+                  "height": 1000
+                }
+              },
+              "media": {
+                "url": "https://cdn.bereal.network/Photos/[REDACTED]/realmoji/[REDACTED]",
+                "width": 500,
+                "height": 500
+              },
+              "type": "up",
+              "emoji": "👍",
+              "isInstant": false,
+              "postedAt": "2023-07-14T02:47:15.850Z"
+            }
+          ],
+          "comments": [],
+          "unblurCount": 0,
+          "takenAt": "2023-07-14T02:46:26.520Z",
+          "creationDate": "2023-07-14T02:46:26.657Z",
+          "updatedAt": "2023-07-14T02:46:26.657Z"
+        }
+      ]
+    }
+  ]
+}
+
 ```
 
 ### feeds/discovery
