@@ -9,7 +9,7 @@ This Repo contains all the endpoints that I was able to find from my Network wid
   * [Endpoints](#endpoints)
     * [Metric Collection](#metric-collection)
     * [BeReal Application Specific requests](#bereal-application-specific-requests)
-      * [Storage](#storage)
+      * [Storage](#storage-)
       * [Feeds](#feeds)
       * [Relationships](#relationships)
       * [Search](#search)
@@ -17,10 +17,11 @@ This Repo contains all the endpoints that I was able to find from my Network wid
       * [Person](#person)
       * [Posting a photo](#posting-a-photo)
       * [Legal schmooz](#legal-schmooz)
+      * [Help Section](#help-section)
   * [Domains](#domains)
   * [Application workflows](#application-workflows)
     * [Get Usernames](#get-usernames)
-    * [feeds/friends](#feedsfriends)
+    * [feeds/friends-v1](#feedsfriends-v1)
     * [feeds/discovery](#feedsdiscovery)
     * [feeds/memories/video](#feedsmemoriesvideo)
     * [feeds/memories](#feedsmemories)
@@ -30,10 +31,11 @@ This Repo contains all the endpoints that I was able to find from my Network wid
     * [relationships/friend-requests](#relationshipsfriend-requests)
     * [relationships/friend-requests/received](#relationshipsfriend-requestsreceived)
     * [relationships/friend-requests/sent](#relationshipsfriend-requestssent)
-    * [api/person/profiles/<uid>](#apipersonprofiles-uid)
+    * [api/person/profiles/<uid>](#apipersonprofilesuid)
     * [sendCaptureInProgressPush](#sendcaptureinprogresspush)
     * [Firebase push](#firebase-push)
     * [content/post](#contentpost)
+    * [Metric Collection](#metric-collection-1)
   * [Stargazers over time](#stargazers-over-time)
 <!-- TOC -->
 
@@ -58,7 +60,7 @@ The below contains an overview of the endpoints.
 | `https://logs.browser-intake-datadoghq.com/api/v2/logs?ddsource=ios`                              | Application usage metrics                                                                                                | `POST HTTP/2.0` |
 | `https://api2.amplitude.com/`                                                                     | User journey tracking                                                                                                    | `POST HTTP/2.0` |
 | `https://region1.app-measurement.com/a`                                                           | Firebase (I'm like 80% sure)                                                                                             | `POST HTTP/2.0` |
-| `https://api.onesignal.com/apps/91b217c4-7ad8-4fd1-a01c-f4ed5b2a4711/ios_params.js?player_id=<>>` | Push messaging (Probably the notification going off)                                                                     | `GET HTTP/2.0`  | 
+| `https://api.onesignal.com/apps/91b217c4-7ad8-4fd1-a01c-f4ed5b2a4711/ios_params.js?player_id=<>>` | Push messaging (Probably the notification going off)                                                                     | `GET HTTP/2.0`  |
 | `https://fcmtoken.googleapis.com/register`                                                        | [Firebase Messaging](https://firebase.google.com/docs/cloud-messaging) (maybe also for push notifications, but authing?) | `POST HTTP/2.0` |
 | `https://firebaselogging-pa.googleapis.com/v1/firelog/legacy/batchlog`                            | Firebase Logging                                                                                                         | `POST HTTP/2.0` |
 
@@ -66,10 +68,10 @@ The below contains an overview of the endpoints.
 
 
 #### Storage 
-| URL                                                           | Use                                                                                                                     | Request type    |
-|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://storage.bere.al/Photos/<uid>`                        | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage)                  | `GET HTTP/2.0`  |
-| `https://bereal-us-central1-memories.storage.googleapis.com ` | Memories 2022 recap video storage                                                                                       | `GET HTTP/2.0`  |                                                                            | `GET HTTP/2.0`  |
+| URL                                                          | Use                                                                                                    | Request type   |
+|--------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|----------------|
+| `https://storage.bere.al/Photos/<uid>`                       | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage) | `GET HTTP/2.0` |
+| `https://bereal-us-central1-memories.storage.googleapis.com` | Memories 2022 recap video storage                                                                      | `GET HTTP/2.0` |
                                                                                                                                                                                       
   
 #### Feeds
@@ -98,14 +100,14 @@ The below contains an overview of the endpoints.
 
 | URL                                            | Use                                                   | Request type   |
 |------------------------------------------------|-------------------------------------------------------|----------------|
-| `https://mobile.bereal.com/api/search/profile` | Searches based on full name or partial name of a user | `GET HTTP/2.0` | 
+| `https://mobile.bereal.com/api/search/profile` | Searches based on full name or partial name of a user | `GET HTTP/2.0` |
 
 #### Settings
 
 | URL                                                        | Use                                                               | Request type    |
 |------------------------------------------------------------|-------------------------------------------------------------------|-----------------|
 | `https://mobile.bereal.com/api/settings`                   | Retrieves settings for the app, both global and user              | `GET HTTP/2.0`  |
-| `https://mobile.bereal.com/api/settings/notification-push` | Gets user preferences on push notifications                       | `GET HTTP/2.0`  | 
+| `https://mobile.bereal.com/api/settings/notification-push` | Gets user preferences on push notifications                       | `GET HTTP/2.0`  |
 | `https://mobile.bereal.com/api/parental-consent-request`   | Creates a request for parental consent if user is under 13 in EEZ | `POST HTTP/2.0` |
 
 
@@ -141,26 +143,41 @@ The below contains an overview of the endpoints.
 
 
 #### Legal schmooz
-| URL                                           | Use                                                                                                                     | Request type    |
-|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://mobile.bereal.com/api/terms/privacy` | What Terms and conditions the user has accepted                                                                         | `GET HTTP/2.0`  |
+| URL                                           | Use                                             | Request type   |
+|-----------------------------------------------|-------------------------------------------------|----------------|
+| `https://mobile.bereal.com/api/terms/privacy` | What Terms and conditions the user has accepted | `GET HTTP/2.0` |
 
 #### Help Section
-| URL                                                           | Use                                                                                                          | Request type    |
-|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://berealapp.zendesk.com/api/private/mobile_sdk/settings/id.json`  | Where the user send message to the help service   [Bereal use Zendesk](https://www.zendesk.fr)    | `GET HTTP/2.0`  |
-| `https://berealapp.zendesk.com/attachments/token/ID/?name=ID.jpeg`       | Where the user Photo is stored (help message)                                                     | `GET HTTP/2.0`  |
+| URL                                                                     | Use                                                                                            | Request type   |
+|-------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|----------------|
+| `https://berealapp.zendesk.com/api/private/mobile_sdk/settings/id.json` | Where the user send message to the help service   [Bereal use Zendesk](https://www.zendesk.fr) | `GET HTTP/2.0` |
+| `https://berealapp.zendesk.com/attachments/token/ID/?name=ID.jpeg`      | Where the user Photo is stored (help message)                                                  | `GET HTTP/2.0` |
                   
                                                                                                                                                                                       
   
 ## Domains
 
+Below contains the _top level_ domains that BeReal uses
+
+| Domain           | Use cases                                                              |
+|------------------|------------------------------------------------------------------------|
+| `bereal.team`    | Seems to be _Back Office_ stuff and cloud infrastructure               |
+| `bere.al`        | Seems to be public facing domains like their website, and jobs posting |
+| `bereal.com`     | More back office tools                                                 |
+| `bereal.network` | CND and off cloud Networking systems                                   |
+
+
+
+### Subdomains
+
+Below is all the subdomains we have been able to find
+
 
 | URL                           | Use                                                                                    |
 |-------------------------------|----------------------------------------------------------------------------------------|
 | `status.bereal.team`          | Simple text based status page of services                                              |
-| `tools.bereal.team`           | Probably internal tooling                                                              | 
-| `auth.bereal.team`            | _assuming_ to be authentication services                                               | 
+| `tools.bereal.team`           | Probably internal tooling                                                              |
+| `auth.bereal.team`            | _assuming_ to be authentication services                                               |
 | `doc.bereal.team`             | Probably a custom URL for google docs  (Protected by IAP)                              |
 | `dev.argocd.bereal.team`      | Development [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) deployment             |
 | `webhooks.bereal.team`        | Most likely incoming webhooks to the BeReal systems                                    |
@@ -229,6 +246,10 @@ The below contains an overview of the endpoints.
 | `tools.bereal.com`            | Internal tooling (now Deprecated)                                                      |
 | `jobs.bereal.com`             | Job postings                                                                           |
 | `cdn.eu.bereal.com`           | EU CDN                                                                                 |
+| `bereal.network`              | Seems to be their out of cloud Network services domain                                 |
+| `cdn.bereal.network`          | New CDN running on `MCI Communications Services, Inc. d/b/a Verizon Business`          |
+| `dev-cdn.bereal.network`      | Development CDN running on `MCI Communications Services, Inc. d/b/a Verizon Business`  |
+
 ---
 
 ## Application workflows
@@ -241,7 +262,7 @@ This seems to be the endpoint that gets called when you load the _Discover_ page
 Post to URL
 
 _Requires Authentication_
-```text
+```json
 {
     "data": {
         "uids": [
@@ -252,7 +273,7 @@ _Requires Authentication_
 ```
 
 Response (Authenticated)
-```text
+```json
 {
     "result": [
         {
@@ -265,7 +286,7 @@ Response (Authenticated)
 }
 ```
 Response (Un-authenticated)
-```text
+```json
 {
     "error": {
         "message": "You must be authenticated.",
@@ -278,7 +299,7 @@ Response (Un-authenticated)
 When the app opens, it makes a call to `api/feed/friends-v1`
 
 Below is an example, with PII removed. 
-```text
+```json
 {
   "userPosts": {
     "user": {
@@ -373,8 +394,8 @@ Below is an example, with PII removed.
             "height": 2000
           },
           "location": {
-            "latitude": 43.079,
-            "longitude": -123.5797
+            "latitude": [REDACTED],
+            "longitude": [REDACTED]
           },
           "retakeCounter": 1,
           "lateInSeconds": 0,
@@ -427,7 +448,7 @@ You can see an example response from the API by looking at the [public.json](pub
 
 2021 and 2022 memories recaps video
 
-```text
+```json
 {
     "status": "unavailable",
     "url": null
@@ -438,7 +459,7 @@ You can see an example response from the API by looking at the [public.json](pub
 
 This shows all your memories
 
-```text
+```json
         {
             "id": "RPe9OfuPIOscE9LPxoRpX",
             "thumbnail": {
@@ -465,7 +486,8 @@ This shows all your memories
 ### api/terms
 
 Shows what terms and conditions the user has accepted
-```
+
+```json
 {
     "data": [
         {
@@ -509,7 +531,7 @@ Shows what terms and conditions the user has accepted
 ### api/relationships/suggestions
 This API returns a list of account that you _may or may not know_ (This is worked out server side based on syncing contacts)
 
-```text
+```json
         {
             "fullname": "Mya <>",
             "id": "<>",
@@ -527,7 +549,7 @@ This API returns a list of account that you _may or may not know_ (This is worke
 
 This API gives a list of users you are friends with
 
-```text
+```json
 {
             "fullname": "<>",
             "id": "<>",
@@ -545,7 +567,7 @@ This API gives a list of users you are friends with
 
 Post request to make a friend request
 
-```text
+```json
 {
     "fullname": "Erin <>>",
     "id": "<>",
@@ -567,7 +589,7 @@ Shows a list of friend requests the user (me) has received
 
 As I have no pending requests, this is what it shows. I would assume it would show the fields `profilePicture` and `UserName`
 
-```text
+```json
 {
     "data": [],
     "next": null
@@ -578,7 +600,7 @@ As I have no pending requests, this is what it shows. I would assume it would sh
 
 Shows a list of friend requests the user (me) has sent to other users, as well as the status of the request
 
-```text
+```json
 
 {
     "data": [
@@ -652,7 +674,7 @@ This is a cloud function that seems to push a message to pubsub on the BeReal si
 
 What it sends:
 
-```text
+```json
 {
     "data": {
         "photoURL": "Photos/<me>/profile/<me>-1655905537-profile-picture.jpg",
@@ -664,7 +686,7 @@ What it sends:
 
 Response 
 
-```text
+```json
 {
     "result": "projects/alexisbarreyat-bereal/messages/7517087177659076139"
 }
@@ -674,7 +696,7 @@ Response
 
 Request 
 
-```text
+```json
 {
     "cacheControl": "public,max-age=172800",
     "contentType": "image/jpeg",
@@ -685,7 +707,7 @@ Request
 }
 ```
 
-```text
+```json
 {
     "bucket": "storage.bere.al",
     "cacheControl": "public,max-age=172800",
@@ -715,7 +737,7 @@ This is the API endpoint bereal posts to when it's finalizing the post
 
 Request 
 
-```text
+```json
 {
     "backCamera": {
         "bucket": "storage.bere.al",
@@ -742,7 +764,7 @@ Request
 
 Response
 
-```text
+```json
 {
     "caption": null,
     "comments": {
