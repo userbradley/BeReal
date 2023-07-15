@@ -19,6 +19,7 @@ This Repo contains all the endpoints that I was able to find from my Network wid
       * [Legal schmooz](#legal-schmooz)
       * [Help Section](#help-section)
   * [Domains](#domains)
+    * [Subdomains](#subdomains)
   * [Application workflows](#application-workflows)
     * [Get Usernames](#get-usernames)
     * [feeds/friends-v1](#feedsfriends-v1)
