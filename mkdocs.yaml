@@ -1,0 +1,108 @@
+nav:
+  - index.md
+
+
+## Config ##
+
+
+repo_name: BeReal
+repo_url: https://github.com/userbradley/BeReal
+edit_uri: edit/dev/docs/
+site_name: "BeReal API Documentation"
+#site_url: !ENV [domain, "https://documentation.breadnet.co.uk"]
+site_description: BeReal API Documentation
+
+#extra_css:
+#  - stylesheets/custom.css # Custom header color
+
+theme:
+  name: material
+#  favicon: favicon.ico
+#  logo: favicon.png
+  icon:
+    repo: fontawesome/brands/github-alt
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      # tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant # IDK
+    - navigation.tracking #Anchor links
+    - navigation.top # back to top of page
+    - navigation.indexes # Allows index.md pages
+    #- !ENV [nav, ""]#navigation.expand #Exapnds the navigation in the UI, disabled by default, but enabled in dev
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - search.share
+    # - search.highlight
+
+
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - md_in_html
+  - footnotes
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true # Pretty check lists
+  - tables
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.snippets
+  - abbr
+  - footnotes
+  - pymdownx.superfences: # https://mermaid.js.org/syntax/flowchart.html and https://squidfunk.github.io/mkdocs-material/reference/diagrams/#configuration
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+  - search
+  - social
+  #- offline
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://uk.linkedin.com/in/bradley-stannard
+      name: My Linkedin
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/userbradley
+      name: My Github
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:webmaster@breadnet.co.uk
+    - icon: fontawesome/solid/file-lines
+      link: https://breadnet.co.uk
+      name: My Website
+  generator: true # I am sorry I will enable it later
