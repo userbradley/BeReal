@@ -1,15 +1,31 @@
 nav:
   - index.md
+  - The Legal stuff you agree too: eula.md
+  - Report a Security Issue: report-security-issues.md
+  - Domains:
+      - domains/index.md
+      - Top Level Domains: domains/top-level-domains.md
+      - Sub Domains: domains/sub-domains.md
+  - API Endpoints:
+      - api-endpoints/index.md
+      - Content: api-endpoints/content.md
+      - Analytics: api-endpoints/analytics.md
+      - Feeds: api-endpoints/feeds.md
+      - Moderation: api-endpoints/moderation.md
+      - Person: api-endpoints/person.md
+      - Relationships: api-endpoints/relationships.md
+      - Search: api-endpoints/search.md
+      - Core: api-endpoints/core.md
+      - Spotify: api-endpoints/spotify.md
 
 
 ## Config ##
 
 
-repo_name: BeReal
+repo_name: BeReal API Documentation
 repo_url: https://github.com/userbradley/BeReal
 edit_uri: edit/dev/docs/
 site_name: "BeReal API Documentation"
-#site_url: !ENV [domain, "https://documentation.breadnet.co.uk"]
 site_description: BeReal API Documentation
 
 #extra_css:
@@ -94,15 +110,10 @@ plugins:
   #- offline
 extra:
   social:
-    - icon: fontawesome/brands/linkedin
-      link: https://uk.linkedin.com/in/bradley-stannard
-      name: My Linkedin
     - icon: fontawesome/brands/github-alt
       link: https://github.com/userbradley
-      name: My Github
-    - icon: fontawesome/solid/paper-plane
-      link: mailto:webmaster@breadnet.co.uk
-    - icon: fontawesome/solid/file-lines
-      link: https://breadnet.co.uk
-      name: My Website
+  consent:
+    title: End User Acceptance
+    description: >-
+      By accessing this site you agree to the storing of cookies, and agree to the sites End User License Agreement
   generator: true # I am sorry I will enable it later
