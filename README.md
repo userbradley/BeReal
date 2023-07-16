@@ -4,6 +4,8 @@
 > **Note**
 > We have been working on a site version of this, available at [https://userbradley.github.io/BeReal/](https://userbradley.github.io/BeReal/)
 
+<br>
+
 This Repo contains all the endpoints that I was able to find from my Network wide SSL inspecting proxy.
 
 <!-- TOC -->
