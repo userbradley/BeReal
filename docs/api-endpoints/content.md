@@ -21,7 +21,7 @@ title: "API endpoint: Content"
 
 ## Unverified Endpoints
 
-!!! note "We dont know if these endpoints still exist or are used"
+!!! note "We don't know if these endpoints still exist or are used"
     Because of the whole SSL pinning thing, we have no clue
 
 | URL                                                                                      | Use                                                                                                    |
@@ -29,7 +29,7 @@ title: "API endpoint: Content"
 | `https://us-central1-alexisbarreyat-bereal.cloudfunctions.net/sendCaptureInProgressPush` | Letting BeReal know you're taking a photo                                                              |
 | `https://firebasestorage.googleapis.com/v0/b/storage.bere.al/o/`                         | Uploads the photo to Firebase from what I can see                                                      |
 
-## Requests
+## Requests and Responses
 
 ### content/post
 
