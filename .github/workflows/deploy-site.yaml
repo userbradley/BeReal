@@ -4,6 +4,9 @@ on:
     branches:
       - feature/mkdocs-site
       - main
+    paths:
+      - docs/**
+      - mkdocs.yaml
 permissions:
   contents: write
 jobs:

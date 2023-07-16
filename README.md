@@ -1,6 +1,9 @@
 # BeReal
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Logo-BeReal.png" width="90" alt="Bereal Application">
 
+> **Note**
+> We have been working on a site version of this, available at [https://userbradley.github.io/BeReal/](https://userbradley.github.io/BeReal/)
+
 This Repo contains all the endpoints that I was able to find from my Network wide SSL inspecting proxy.
 
 <!-- TOC -->
