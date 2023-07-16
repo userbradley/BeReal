@@ -27,6 +27,7 @@ repo_url: https://github.com/userbradley/BeReal
 edit_uri: edit/dev/docs/
 site_name: "BeReal API Documentation"
 site_description: BeReal API Documentation
+site_url: "https://userbradley.github.io/BeReal"
 
 #extra_css:
 #  - stylesheets/custom.css # Custom header color
