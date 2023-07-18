@@ -23,7 +23,7 @@ title: "API endpoint: Moderation"
   "data": [
     {
       "userId": "string",
-      "blockedAt": "2023-02-22T05:12:55.847Z",
+      "blockedAt": "2006-01-02T15:04:05-0700",
       "user": {
         "id": "string",
         "username": "string",

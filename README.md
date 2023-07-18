@@ -1,8 +1,10 @@
 # BeReal
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Logo-BeReal.png" width="90" alt="Bereal Application">
+<br>
+<br>
 
 > **Note**
-> We have been working on a site version of this, available at [https://userbradley.github.io/BeReal/](https://userbradley.github.io/BeReal/)
+> We have been working on a site version of this which is most up to date, available at [https://userbradley.github.io/BeReal/](https://userbradley.github.io/BeReal/)
 
 <br>
 

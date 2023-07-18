@@ -71,7 +71,7 @@ Response
         "sample": [],
         "total": 0
     },
-    "createdAt": "2022-08-10T09:14:17.603Z",
+    "createdAt": "2006-01-02T15:04:05-0700",
     "id": "<>-YKzhel",
     "isLate": true,
     "lateInSeconds": 1425,
@@ -102,7 +102,7 @@ Response
         "url": "https://storage.bere.al/Photos/<me>/bereal/7c44d6e8-086b-4a18-b8b4-d3785f58cda8-1660122851-secondary.jpg",
         "width": 1500
     },
-    "takenAt": "2022-08-10T09:14:11.000Z",
+    "takenAt": "2006-01-02T15:04:05-0700",
     "user": {
         "id": "<me>",
         "profilePicture": {
