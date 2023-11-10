@@ -1,5 +1,12 @@
 # BeReal
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Logo-BeReal.png" width="90" alt="Bereal Application">
+<br>
+<br>
+
+> **Note**
+> We have been working on a site version of this which is most up to date, available at [https://userbradley.github.io/BeReal/](https://userbradley.github.io/BeReal/)
+
+<br>
 
 This Repo contains all the endpoints that I was able to find from my Network wide SSL inspecting proxy.
 
@@ -9,7 +16,7 @@ This Repo contains all the endpoints that I was able to find from my Network wid
   * [Endpoints](#endpoints)
     * [Metric Collection](#metric-collection)
     * [BeReal Application Specific requests](#bereal-application-specific-requests)
-      * [Storage](#storage)
+      * [Storage](#storage-)
       * [Feeds](#feeds)
       * [Relationships](#relationships)
       * [Search](#search)
@@ -17,12 +24,14 @@ This Repo contains all the endpoints that I was able to find from my Network wid
       * [Person](#person)
       * [Posting a photo](#posting-a-photo)
       * [Legal schmooz](#legal-schmooz)
+      * [Help Section](#help-section)
   * [Domains](#domains)
+    * [Subdomains](#subdomains)
   * [Application workflows](#application-workflows)
     * [Get Usernames](#get-usernames)
-    * [feeds/friends](#feedsfriends)
+    * [feeds/friends-v1](#feedsfriends-v1)
     * [feeds/discovery](#feedsdiscovery)
-  * [feeds/memories/video](#feedsmemoriesvideo)
+    * [feeds/memories/video](#feedsmemoriesvideo)
     * [feeds/memories](#feedsmemories)
     * [api/terms](#apiterms)
     * [api/relationships/suggestions](#apirelationshipssuggestions)
@@ -30,10 +39,11 @@ This Repo contains all the endpoints that I was able to find from my Network wid
     * [relationships/friend-requests](#relationshipsfriend-requests)
     * [relationships/friend-requests/received](#relationshipsfriend-requestsreceived)
     * [relationships/friend-requests/sent](#relationshipsfriend-requestssent)
-    * [api/person/profiles/<uid>](#apipersonprofiles-uid)
+    * [api/person/profiles/<uid>](#apipersonprofilesuid)
     * [sendCaptureInProgressPush](#sendcaptureinprogresspush)
     * [Firebase push](#firebase-push)
     * [content/post](#contentpost)
+    * [Metric Collection](#metric-collection-1)
   * [Stargazers over time](#stargazers-over-time)
 <!-- TOC -->
 
@@ -58,7 +68,7 @@ The below contains an overview of the endpoints.
 | `https://logs.browser-intake-datadoghq.com/api/v2/logs?ddsource=ios`                              | Application usage metrics                                                                                                | `POST HTTP/2.0` |
 | `https://api2.amplitude.com/`                                                                     | User journey tracking                                                                                                    | `POST HTTP/2.0` |
 | `https://region1.app-measurement.com/a`                                                           | Firebase (I'm like 80% sure)                                                                                             | `POST HTTP/2.0` |
-| `https://api.onesignal.com/apps/91b217c4-7ad8-4fd1-a01c-f4ed5b2a4711/ios_params.js?player_id=<>>` | Push messaging (Probably the notification going off)                                                                     | `GET HTTP/2.0`  | 
+| `https://api.onesignal.com/apps/91b217c4-7ad8-4fd1-a01c-f4ed5b2a4711/ios_params.js?player_id=<>>` | Push messaging (Probably the notification going off)                                                                     | `GET HTTP/2.0`  |
 | `https://fcmtoken.googleapis.com/register`                                                        | [Firebase Messaging](https://firebase.google.com/docs/cloud-messaging) (maybe also for push notifications, but authing?) | `POST HTTP/2.0` |
 | `https://firebaselogging-pa.googleapis.com/v1/firelog/legacy/batchlog`                            | Firebase Logging                                                                                                         | `POST HTTP/2.0` |
 
@@ -66,10 +76,10 @@ The below contains an overview of the endpoints.
 
 
 #### Storage 
-| URL                                                           | Use                                                                                                                     | Request type    |
-|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://storage.bere.al/Photos/<uid>`                        | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage)                  | `GET HTTP/2.0`  |
-| `https://bereal-us-central1-memories.storage.googleapis.com ` | Memories 2022 recap video storage                                                                                       | `GET HTTP/2.0`  |                                                                            | `GET HTTP/2.0`  |
+| URL                                                          | Use                                                                                                    | Request type   |
+|--------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|----------------|
+| `https://storage.bere.al/Photos/<uid>`                       | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage) | `GET HTTP/2.0` |
+| `https://bereal-us-central1-memories.storage.googleapis.com` | Memories 2022 recap video storage                                                                      | `GET HTTP/2.0` |
                                                                                                                                                                                       
   
 #### Feeds
@@ -80,7 +90,7 @@ The below contains an overview of the endpoints.
 | `https://mobile.bereal.com/api/feeds/discovery?limit=<number>` | Feed of `discover` page - Limited by number(int) | `GET HTTP/2.0` |
 | `https://mobile.bereal.com/api/feeds/memories?limit=<number>`  | Your memories                                    | `GET HTTP/2.0` |
 | `https://mobile.bereal.com/api/feeds/memories/video`           | Not sure, perhaps a future feature?              | `GET HTTP/2.0` |
-| `https://mobile.bereal.com/api/feeds/friends`                  | Loads all the images that you're friends with    | `GET HTTP/2.0` |
+| `https://mobile.bereal.com/api/feeds/friends-v1`               | Loads all the images that you're friends with    | `GET HTTP/2.0` |
 
 #### Relationships
 
@@ -98,14 +108,14 @@ The below contains an overview of the endpoints.
 
 | URL                                            | Use                                                   | Request type   |
 |------------------------------------------------|-------------------------------------------------------|----------------|
-| `https://mobile.bereal.com/api/search/profile` | Searches based on full name or partial name of a user | `GET HTTP/2.0` | 
+| `https://mobile.bereal.com/api/search/profile` | Searches based on full name or partial name of a user | `GET HTTP/2.0` |
 
 #### Settings
 
 | URL                                                        | Use                                                               | Request type    |
 |------------------------------------------------------------|-------------------------------------------------------------------|-----------------|
 | `https://mobile.bereal.com/api/settings`                   | Retrieves settings for the app, both global and user              | `GET HTTP/2.0`  |
-| `https://mobile.bereal.com/api/settings/notification-push` | Gets user preferences on push notifications                       | `GET HTTP/2.0`  | 
+| `https://mobile.bereal.com/api/settings/notification-push` | Gets user preferences on push notifications                       | `GET HTTP/2.0`  |
 | `https://mobile.bereal.com/api/parental-consent-request`   | Creates a request for parental consent if user is under 13 in EEZ | `POST HTTP/2.0` |
 
 
@@ -141,26 +151,41 @@ The below contains an overview of the endpoints.
 
 
 #### Legal schmooz
-| URL                                           | Use                                                                                                                     | Request type    |
-|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://mobile.bereal.com/api/terms/privacy` | What Terms and conditions the user has accepted                                                                         | `GET HTTP/2.0`  |
+| URL                                           | Use                                             | Request type   |
+|-----------------------------------------------|-------------------------------------------------|----------------|
+| `https://mobile.bereal.com/api/terms/privacy` | What Terms and conditions the user has accepted | `GET HTTP/2.0` |
 
 #### Help Section
-| URL                                                           | Use                                                                                                          | Request type    |
-|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|-----------------|
-| `https://berealapp.zendesk.com/api/private/mobile_sdk/settings/id.json`  | Where the user send message to the help service   [Bereal use Zendesk](https://www.zendesk.fr)    | `GET HTTP/2.0`  |
-| `https://berealapp.zendesk.com/attachments/token/ID/?name=ID.jpeg`       | Where the user Photo is stored (help message)                                                     | `GET HTTP/2.0`  |
+| URL                                                                     | Use                                                                                            | Request type   |
+|-------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|----------------|
+| `https://berealapp.zendesk.com/api/private/mobile_sdk/settings/id.json` | Where the user send message to the help service   [Bereal use Zendesk](https://www.zendesk.fr) | `GET HTTP/2.0` |
+| `https://berealapp.zendesk.com/attachments/token/ID/?name=ID.jpeg`      | Where the user Photo is stored (help message)                                                  | `GET HTTP/2.0` |
                   
                                                                                                                                                                                       
   
 ## Domains
 
+Below contains the _top level_ domains that BeReal uses
+
+| Domain           | Use cases                                                              |
+|------------------|------------------------------------------------------------------------|
+| `bereal.team`    | Seems to be _Back Office_ stuff and cloud infrastructure               |
+| `bere.al`        | Seems to be public facing domains like their website, and jobs posting |
+| `bereal.com`     | More back office tools                                                 |
+| `bereal.network` | CND and off cloud Networking systems                                   |
+
+
+
+### Subdomains
+
+Below is all the subdomains we have been able to find
+
 
 | URL                           | Use                                                                                    |
 |-------------------------------|----------------------------------------------------------------------------------------|
 | `status.bereal.team`          | Simple text based status page of services                                              |
-| `tools.bereal.team`           | Probably internal tooling                                                              | 
-| `auth.bereal.team`            | _assuming_ to be authentication services                                               | 
+| `tools.bereal.team`           | Probably internal tooling                                                              |
+| `auth.bereal.team`            | _assuming_ to be authentication services                                               |
 | `doc.bereal.team`             | Probably a custom URL for google docs  (Protected by IAP)                              |
 | `dev.argocd.bereal.team`      | Development [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) deployment             |
 | `webhooks.bereal.team`        | Most likely incoming webhooks to the BeReal systems                                    |
@@ -229,6 +254,10 @@ The below contains an overview of the endpoints.
 | `tools.bereal.com`            | Internal tooling (now Deprecated)                                                      |
 | `jobs.bereal.com`             | Job postings                                                                           |
 | `cdn.eu.bereal.com`           | EU CDN                                                                                 |
+| `bereal.network`              | Seems to be their out of cloud Network services domain                                 |
+| `cdn.bereal.network`          | New CDN running on `MCI Communications Services, Inc. d/b/a Verizon Business`          |
+| `dev-cdn.bereal.network`      | Development CDN running on `MCI Communications Services, Inc. d/b/a Verizon Business`  |
+
 ---
 
 ## Application workflows
@@ -241,7 +270,7 @@ This seems to be the endpoint that gets called when you load the _Discover_ page
 Post to URL
 
 _Requires Authentication_
-```text
+```json
 {
     "data": {
         "uids": [
@@ -252,7 +281,7 @@ _Requires Authentication_
 ```
 
 Response (Authenticated)
-```text
+```json
 {
     "result": [
         {
@@ -265,7 +294,7 @@ Response (Authenticated)
 }
 ```
 Response (Un-authenticated)
-```text
+```json
 {
     "error": {
         "message": "You must be authenticated.",
@@ -274,77 +303,147 @@ Response (Un-authenticated)
 }
 ```
 
-### feeds/friends
-When the app opens, it makes a call to `api/feed/friends`
+### feeds/friends-v1
+When the app opens, it makes a call to `api/feed/friends-v1`
 
 Below is an example, with PII removed. 
-```text
-[
-  {
-    "id": "<>>",
-    "notificationID": "<>>",
-    "ownerID": "<>>",
-    "userName": "<>>",
+```json
+{
+  "userPosts": {
     "user": {
-      "id": "<>",
-      "username": "<>"
-    },
-    "mediaType": "late",
-    "region": "us-central",
-    "bucket": "storage.bere.al",
-    "photoURL": "https://storage.bere.al/Photos/<>/bereal/f822aa7a-3b0c-495f-b5bd-a4250a465083-1659997174.jpg",
-    "imageWidth": 1500,
-    "imageHeight": 2000,
-    "secondaryPhotoURL": "https://storage.bere.al/Photos/<>/bereal/f822aa7a-3b0c-495f-b5bd-a4250a465083-1659997174-secondary.jpg",
-    "secondaryImageHeight": 2000,
-    "secondaryImageWidth": 1500,
-    "members": [
-      "<>"
-    ],
-    "lateInSeconds": 67,
-    "isPublic": false,
-    "location": {
-      "_latitude": <>,
-      "_longitude": -<>
-    },
-    "retakeCounter": 0,
-    "creationDate": {
-      "_seconds": 1659997238,
-      "_nanoseconds": 684000000
-    },
-    "updatedAt": 1660002563356,
-    "takenAt": {
-      "_seconds": 1659997174,
-      "_nanoseconds": 0
-    },
-    "comment": [],
-    "realMojis": [
-      {
-        "id": "-j-<>>",
-        "uid": "<>>",
-        "userName": "<>>",
-        "user": {
-          "id": "<>>",
-          "username": "<>>",
-          "profilePicture": {
-            "height": 1000,
-            "width": 1000,
-            "url": "https://storage.bere.al/cdn-cgi/image/width=200,height=200/Photos/<>/profile/<>-1658600169-profile-picture.jpg"
-          }
-        },
-        "emoji": "😍",
-        "type": "heartEyes",
-        "uri": "https://storage.bere.al/Photos/<>/realmoji/<>-realmoji-heartEyes-1659046828.jpg",
-        "date": {
-          "_seconds": 1660002563,
-          "_nanoseconds": 350000000
-        }
+      "id": "[REDACTED]",
+      "username": "[REDACTED]",
+      "profilePicture": {
+        "url": "https://cdn.bereal.network/Photos/[REDACTED]/profile/[REDACTED]",
+        "width": 999,
+        "height": 999
       }
-    ],
-    "screenshots": [],
-    "screenshotsV2": []
+    },
+    "region": "us-central",
+    "momentId": "L1O8S_Tbph2fpEeuoSWcv",
+    "posts": [
+      {
+        "id": "-PGe3UUH4wsDg0ttqc7G-",
+        "visibility": ["friends"],
+        "primary": {
+          "url": "https://cdn.bereal.network/Photos/[REDACTED]/post/[REDACTED]",
+          "width": 2000,
+          "height": 1500
+        },
+        "secondary": {
+          "url": "https://cdn.bereal.network/Photos/[REDACTED]/post/[REDACTED]",
+          "width": 2000,
+          "height": 1500
+        },
+        "caption": "I love my tortilla blanky 🥰",
+        "retakeCounter": 0,
+        "lateInSeconds": 16110,
+        "isLate": true,
+        "isMain": true,
+        "realMojis": [
+          {
+            "id": "Jn8tDy3wwwJ197BHr7lJs",
+            "user": {
+              "id": "[REDACTED]",
+              "username": "[REDACTED]",
+              "profilePicture": {
+                "url": "https://cdn.bereal.network/Photos/[REDACTED]/profile/[REDACTED]",
+                "width": 1000,
+                "height": 1000
+              }
+            },
+            "media": {
+              "url": "https://cdn.bereal.network/Photos/[REDACTED]/realmoji/[REDACTED]",
+              "width": 500,
+              "height": 500
+            },
+            "type": "up",
+            "emoji": "👍",
+            "isInstant": false,
+            "postedAt": "2023-07-14T02:47:15.850Z"
+          }
+        ],
+        "comments": [],
+        "unblurCount": 0,
+        "takenAt": "2023-07-14T02:46:26.520Z",
+        "creationDate": "2023-07-14T02:46:26.657Z",
+        "updatedAt": "2023-07-14T02:46:26.657Z"
+      }
+    ]
   },
-]
+  "friendsPosts": [
+    {
+      "user": {
+        "id": "[REDACTED]",
+        "username": "[REDACTED]",
+        "profilePicture": {
+          "url": "https://cdn.bereal.network/Photos/[REDACTED]/profile/[REDACTED]",
+          "width": 1000,
+          "height": 1000
+        }
+      },
+      "momentId": "L1O8S_Tbph2fpEeuoSWcv",
+      "region": "us-central",
+      "moment": {
+        "id": "L1O8S_Tbph2fpEeuoSWcv",
+        "region": "us-central"
+      },
+      "posts": [
+        {
+          "id": "HLAxwJatn4OZFmLieuM8N",
+          "primary": {
+            "url": "https://cdn.bereal.network/Photos/[REDACTED]/post/[REDACTED]",
+            "width": 1500,
+            "height": 2000
+          },
+          "secondary": {
+            "url": "https://cdn.bereal.network/Photos/[REDACTED]/post/[REDACTED]",
+            "width": 1500,
+            "height": 2000
+          },
+          "location": {
+            "latitude": [REDACTED],
+            "longitude": [REDACTED]
+          },
+          "retakeCounter": 1,
+          "lateInSeconds": 0,
+          "isLate": false,
+          "isMain": true,
+          "takenAt": "2023-07-13T22:16:41.468Z",
+          "realMojis": [
+            {
+              "id": "qPIyfQuWbdr1Ma4bwDE1N",
+              "user": {
+                "id": "[REDACTED]",
+                "username": "[REDACTED]",
+                "profilePicture": {
+                  "url": "https://cdn.bereal.network/Photos/[REDACTED]/profile/[REDACTED]",
+                  "width": 1000,
+                  "height": 1000
+                }
+              },
+              "media": {
+                "url": "https://cdn.bereal.network/Photos/[REDACTED]/realmoji/[REDACTED]",
+                "width": 500,
+                "height": 500
+              },
+              "type": "up",
+              "emoji": "👍",
+              "isInstant": false,
+              "postedAt": "2023-07-14T02:47:15.850Z"
+            }
+          ],
+          "comments": [],
+          "unblurCount": 0,
+          "takenAt": "2023-07-14T02:46:26.520Z",
+          "creationDate": "2023-07-14T02:46:26.657Z",
+          "updatedAt": "2023-07-14T02:46:26.657Z"
+        }
+      ]
+    }
+  ]
+}
+
 ```
 
 ### feeds/discovery
@@ -353,11 +452,11 @@ This is the `Discovery` page, where you can see people that are not your friends
 
 You can see an example response from the API by looking at the [public.json](public.json)
 
-## feeds/memories/video
+### feeds/memories/video
 
 2021 and 2022 memories recaps video
 
-```text
+```json
 {
     "status": "unavailable",
     "url": null
@@ -368,7 +467,7 @@ You can see an example response from the API by looking at the [public.json](pub
 
 This shows all your memories
 
-```text
+```json
         {
             "id": "RPe9OfuPIOscE9LPxoRpX",
             "thumbnail": {
@@ -395,7 +494,8 @@ This shows all your memories
 ### api/terms
 
 Shows what terms and conditions the user has accepted
-```
+
+```json
 {
     "data": [
         {
@@ -439,7 +539,7 @@ Shows what terms and conditions the user has accepted
 ### api/relationships/suggestions
 This API returns a list of account that you _may or may not know_ (This is worked out server side based on syncing contacts)
 
-```text
+```json
         {
             "fullname": "Mya <>",
             "id": "<>",
@@ -457,7 +557,7 @@ This API returns a list of account that you _may or may not know_ (This is worke
 
 This API gives a list of users you are friends with
 
-```text
+```json
 {
             "fullname": "<>",
             "id": "<>",
@@ -475,7 +575,7 @@ This API gives a list of users you are friends with
 
 Post request to make a friend request
 
-```text
+```json
 {
     "fullname": "Erin <>>",
     "id": "<>",
@@ -497,7 +597,7 @@ Shows a list of friend requests the user (me) has received
 
 As I have no pending requests, this is what it shows. I would assume it would show the fields `profilePicture` and `UserName`
 
-```text
+```json
 {
     "data": [],
     "next": null
@@ -508,7 +608,7 @@ As I have no pending requests, this is what it shows. I would assume it would sh
 
 Shows a list of friend requests the user (me) has sent to other users, as well as the status of the request
 
-```text
+```json
 
 {
     "data": [
@@ -582,7 +682,7 @@ This is a cloud function that seems to push a message to pubsub on the BeReal si
 
 What it sends:
 
-```text
+```json
 {
     "data": {
         "photoURL": "Photos/<me>/profile/<me>-1655905537-profile-picture.jpg",
@@ -594,7 +694,7 @@ What it sends:
 
 Response 
 
-```text
+```json
 {
     "result": "projects/alexisbarreyat-bereal/messages/7517087177659076139"
 }
@@ -604,7 +704,7 @@ Response
 
 Request 
 
-```text
+```json
 {
     "cacheControl": "public,max-age=172800",
     "contentType": "image/jpeg",
@@ -615,7 +715,7 @@ Request
 }
 ```
 
-```text
+```json
 {
     "bucket": "storage.bere.al",
     "cacheControl": "public,max-age=172800",
@@ -645,7 +745,7 @@ This is the API endpoint bereal posts to when it's finalizing the post
 
 Request 
 
-```text
+```json
 {
     "backCamera": {
         "bucket": "storage.bere.al",
@@ -672,7 +772,7 @@ Request
 
 Response
 
-```text
+```json
 {
     "caption": null,
     "comments": {
@@ -758,8 +858,6 @@ Response
         "version": "1.1.2",
         "version.build": "9854"
     },
-
-
 ```
 
 
