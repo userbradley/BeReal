@@ -1,0 +1,23 @@
+name: Broken Link Checker
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 18 * * *"
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check Links
+        uses: lycheeverse/lychee-action@v1.8.0
+        with:
+          args: --verbose --no-progress './**/*.md' './**/*.html' './**/*.rst' --exclude-mail
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Create Issue From File
+        uses: peter-evans/create-issue-from-file@v4.0.1
+        with:
+          title: Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: Broken Link
