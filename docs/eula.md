@@ -35,11 +35,10 @@ This End User License Agreement ("Agreement") is a legal agreement between you (
    This Agreement constitutes the entire agreement between you and the Site regarding your use of the Site, superseding any prior agreements or understandings.
 
 
-<br> 
+<br>
 By accessing the Site, you acknowledge that you have read, understood, and agree to be bound by this End User License Agreement. If you do not agree to these terms, you should not access or use the Site.
 
 
 Last updated: 15-jul-2023 16:05:33 UTC
 
 BeReal API Documentation
-

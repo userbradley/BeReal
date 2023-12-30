@@ -33,4 +33,3 @@ title: "API endpoint: Moderation"
   ]
 }
 ```
-
