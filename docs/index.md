@@ -22,6 +22,6 @@ This site is laid out so that each section in the Navigation on the left, is a s
 
 If you want to get Involved in this site, open a Pull request adding or fixing what ever the issue was.
 
-## Stargazers 
+## Stargazers
 
 [![Stargazers over time](https://starchart.cc/userbradley/BeReal.svg)](https://starchart.cc/userbradley/BeReal)

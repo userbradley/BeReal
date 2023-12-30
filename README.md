@@ -59,7 +59,7 @@ Any reference to something like `/feeds/` assumes you just go `https://mobile.be
 
 ## Endpoints
 
-The below contains an overview of the endpoints. 
+The below contains an overview of the endpoints.
 
 ### Metric Collection
 
@@ -75,13 +75,13 @@ The below contains an overview of the endpoints.
 ### BeReal Application Specific requests
 
 
-#### Storage 
+#### Storage
 | URL                                                          | Use                                                                                                    | Request type   |
 |--------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|----------------|
 | `https://storage.bere.al/Photos/<uid>`                       | Where the user generated images are stored, backed by a [GCS Bucket](https://cloud.google.com/storage) | `GET HTTP/2.0` |
 | `https://bereal-us-central1-memories.storage.googleapis.com` | Memories 2022 recap video storage                                                                      | `GET HTTP/2.0` |
-                                                                                                                                                                                      
-  
+
+
 #### Feeds
 
 
@@ -160,9 +160,9 @@ The below contains an overview of the endpoints.
 |-------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|----------------|
 | `https://berealapp.zendesk.com/api/private/mobile_sdk/settings/id.json` | Where the user send message to the help service   [Bereal use Zendesk](https://www.zendesk.fr) | `GET HTTP/2.0` |
 | `https://berealapp.zendesk.com/attachments/token/ID/?name=ID.jpeg`      | Where the user Photo is stored (help message)                                                  | `GET HTTP/2.0` |
-                  
-                                                                                                                                                                                      
-  
+
+
+
 ## Domains
 
 Below contains the _top level_ domains that BeReal uses
@@ -306,7 +306,7 @@ Response (Un-authenticated)
 ### feeds/friends-v1
 When the app opens, it makes a call to `api/feed/friends-v1`
 
-Below is an example, with PII removed. 
+Below is an example, with PII removed.
 ```json
 {
   "userPosts": {
@@ -692,7 +692,7 @@ What it sends:
 }
 ```
 
-Response 
+Response
 
 ```json
 {
@@ -702,7 +702,7 @@ Response
 
 ### Firebase push
 
-Request 
+Request
 
 ```json
 {
@@ -743,7 +743,7 @@ Request
 
 This is the API endpoint bereal posts to when it's finalizing the post
 
-Request 
+Request
 
 ```json
 {
