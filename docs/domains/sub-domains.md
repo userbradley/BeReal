@@ -72,29 +72,29 @@ title: Sub Domains
 
 ## bereal.team
 
-| URL                           | Use                                                                                    |
-|-------------------------------|----------------------------------------------------------------------------------------|
-| `status.bereal.team`          | Simple text based status page of services                                              |
-| `tools.bereal.team`           | Probably internal tooling                                                              |
-| `auth.bereal.team`            | _assuming_ to be authentication services                                               |
-| `doc.bereal.team`             | Probably a custom URL for google docs  (Protected by IAP)                              |
-| `dev.argocd.bereal.team`      | Development [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) deployment             |
-| `webhooks.bereal.team`        | Most likely incoming webhooks to the BeReal systems                                    |
-| `status.bereal.team`          | Text based status page                                                                 |
-| `tools.bereal.team`           | Internal tooling                                                                       |
-| `dev.mobile.bereal.team`      | Not sure                                                                               |
-| `dev.webhooks.bereal.team`    | *DEV* Development webhooks                                                             |
-| `grafana.bereal.team`         | Grafana system, dashboards and alerting                                                |
-| `dev.doc.bereal.team`         | *DEV* Most likely internal Documentation                                               |
-| `dev.grafana.bereal.team`     | *DEV* Grafana system, dashboards and alerting                                          |
-| `kiali.bereal.team`           | [Istio Service mesh console](https://kiali.io)                                         |
-| `bereal.team    `             | Apex Domain                                                                            |
-| `dev.tools.bereal.team`       | *DEV* Internal Tooling                                                                 |
-| `mobile.bereal.team`          |                                                                                        |
-| `dev.status.bereal.team`      | *DEV* Status page                                                                      |
-| `argocd.bereal.team`          | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) Deployment                         |
-| `auth.bereal.team`            | Authentication systems                                                                 |
-| `doc.bereal.team`             | Most likely internal Documentation                                                     |
-| `dev.auth.bereal.team`        | *DEV* Authentication systems                                                           |
-| `dev.notific.bereal.team`     | *DEV* Misspell   notification system                                                   |
-| `ogma.bereal.team`    		| Messaging service																		 |
+| URL                        | Use                                                                        |
+|----------------------------|----------------------------------------------------------------------------|
+| `status.bereal.team`       | Simple text based status page of services                                  |
+| `tools.bereal.team`        | Probably internal tooling                                                  |
+| `auth.bereal.team`         | _assuming_ to be authentication services                                   |
+| `doc.bereal.team`          | Probably a custom URL for google docs  (Protected by IAP)                  |
+| `dev.argocd.bereal.team`   | Development [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) deployment |
+| `webhooks.bereal.team`     | Most likely incoming webhooks to the BeReal systems                        |
+| `status.bereal.team`       | Text based status page                                                     |
+| `tools.bereal.team`        | Internal tooling                                                           |
+| `dev.mobile.bereal.team`   | Not sure                                                                   |
+| `dev.webhooks.bereal.team` | *DEV* Development webhooks                                                 |
+| `grafana.bereal.team`      | Grafana system, dashboards and alerting                                    |
+| `dev.doc.bereal.team`      | *DEV* Most likely internal Documentation                                   |
+| `dev.grafana.bereal.team`  | *DEV* Grafana system, dashboards and alerting                              |
+| `kiali.bereal.team`        | [Istio Service mesh console](https://kiali.io)                             |
+| `bereal.team    `          | Apex Domain                                                                |
+| `dev.tools.bereal.team`    | *DEV* Internal Tooling                                                     |
+| `mobile.bereal.team`       |                                                                            |
+| `dev.status.bereal.team`   | *DEV* Status page                                                          |
+| `argocd.bereal.team`       | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) Deployment             |
+| `auth.bereal.team`         | Authentication systems                                                     |
+| `doc.bereal.team`          | Most likely internal Documentation                                         |
+| `dev.auth.bereal.team`     | *DEV* Authentication systems                                               |
+| `dev.notific.bereal.team`  | *DEV* Misspell   notification system                                       |
+| `ogma.bereal.team`    		   | Messaging service																		                                        |
