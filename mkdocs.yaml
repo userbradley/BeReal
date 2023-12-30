@@ -12,6 +12,7 @@ nav:
       - Analytics: api-endpoints/analytics.md
       - Feeds: api-endpoints/feeds.md
       - Moderation: api-endpoints/moderation.md
+      - Messaging: api-endpoints/messaging.md
       - Person: api-endpoints/person.md
       - Relationships: api-endpoints/relationships.md
       - Search: api-endpoints/search.md

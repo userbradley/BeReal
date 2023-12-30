@@ -97,3 +97,4 @@ title: Sub Domains
 | `doc.bereal.team`             | Most likely internal Documentation                                                     |
 | `dev.auth.bereal.team`        | *DEV* Authentication systems                                                           |
 | `dev.notific.bereal.team`     | *DEV* Misspell   notification system                                                   |
+| `ogma.bereal.team`    		| Messaging service																		 |
