@@ -2,6 +2,7 @@
 title: "API endpoint: messaging"
 ---
 
+
 ## Verified Endpoints
 
 | URL                                                                          | Use                            |
