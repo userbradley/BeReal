@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: no-commit-to-branch
+        name: Ensure commits are only made to feature branches
+        args: ['-b', 'main']
+      - id: end-of-file-fixer
+        name: Ensure files have end of file
+      - id: trailing-whitespace
+        name: Trims extra whitespaces
+      - id: check-toml
+        name: Checks TOML files
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.10.0
+    hooks:
+      - id: yamlfmt
+        name: Yaml Formatting
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.26.3
+    hooks:
+      - id: check-github-actions
+        name: GitHub actions check
+      - id: check-dependabot
+        name: GitHub Workflows
+      - id: check-dependabot
+        name: Dependabot
