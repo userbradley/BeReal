@@ -82,3 +82,13 @@ git push
 ```
 
 Click the `Contribute` button and Open a Pull request
+
+## Errors you may see
+
+### Precommit error
+
+```text
+Trims extra whitespaces..................................................Failed
+```
+
+Just run `git add .` and `git commit` again
