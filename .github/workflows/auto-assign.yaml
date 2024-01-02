@@ -1,0 +1,15 @@
+name: Auto Assign
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+jobs:
+  add-reviews:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    name: Assign users to Pull Requests
+    steps:
+      - uses: kentaro-m/auto-assign-action@v1.2.5
+        with:
+          configuration-path: '.github/config/auto-assign.yml'
