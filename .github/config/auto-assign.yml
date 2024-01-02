@@ -1,0 +1,5 @@
+addReviewers: true
+addAssignees: author
+reviewers:
+  - userbradley
+numberOfReviewers: 0
