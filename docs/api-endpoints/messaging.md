@@ -19,12 +19,12 @@ title: "API endpoint: messaging"
 
 ```
 gRPC message 0 (compressed False)
-[message]    1                               
-[message]    1.1                             
-[message]    1.1.1                           
-[string]     1.1.1.1  “ID”
-[message]    1.2                             
-[uint32]     1.2.1    1                      
-[string]     1.2.2    this is a message
+ [message]    1                               
+ [message]    1.1                             
+ [message]    1.1.1                           
+ [string]     1.1.1.1  “ID”
+ [message]    1.2                             
+ [uint32]     1.2.1    1                      
+ [string]     1.2.2    this is a message
 
 ```
