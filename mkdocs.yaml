@@ -18,6 +18,7 @@ nav:
       - Search: api-endpoints/search.md
       - Core: api-endpoints/core.md
       - Spotify: api-endpoints/spotify.md
+  - Contributing: contributing.md
 ## Config ##
 repo_name: BeReal API Documentation
 repo_url: https://github.com/userbradley/BeReal
