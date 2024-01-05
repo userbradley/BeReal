@@ -68,7 +68,9 @@ title: Sub Domains
 | URL                           | Use                                                                                                                                |
 |-------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | `cdn.bereal.network`          | New CDN running on `MCI Communications Services, Inc. d/b/a Verizon Business`   pointing to `storage.bere.al` Bucket               |
+| `cdn-resize.bereal.network`   | Image optimization CDN																											 |
 | `dev-cdn.bereal.network`      | Development CDN running on `MCI Communications Services, Inc. d/b/a Verizon Business` pointing to `sandbox-storage.bere.al` bucket |
+
 
 ## bereal.team
 
@@ -97,4 +99,4 @@ title: Sub Domains
 | `doc.bereal.team`          | Most likely internal Documentation                                         |
 | `dev.auth.bereal.team`     | *DEV* Authentication systems                                               |
 | `dev.notific.bereal.team`  | *DEV* Misspell   notification system                                       |
-| `ogma.bereal.team`    		   | Messaging service																		                                        |
+| `ogma.bereal.team`         | Messaging service							                              |

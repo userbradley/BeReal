@@ -6,12 +6,128 @@ title: "API endpoint: Analytics"
 |---------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `https://logs.browser-intake-datadoghq.com/api/v2/logs?ddsource=ios`                              | DataDog application usage metrics and RUM                                                                                                            |
 | `https://api2.amplitude.com/`                                                                     | User journey tracking                                                                                                                                |
+| `https://api.lab.amplitude.com/sdk/v2/vardata?v=0`                                                | 2023 recap video analytics                                                                                                                           |
 | `https://region1.app-measurement.com/a`                                                           | Firebase [See here for info](https://stackoverflow.com/questions/54461349/how-to-decrypt-firebase-requests-to-app-measurement-com/54463682#54463682) |
 | `https://api.onesignal.com/apps/91b217c4-7ad8-4fd1-a01c-f4ed5b2a4711/ios_params.js?player_id=<>>` | Push messaging (Probably the notification going off)                                                                                                 |
 | `https://fcmtoken.googleapis.com/register`                                                        | [Firebase Messaging](https://firebase.google.com/docs/cloud-messaging) (maybe also for push notifications, but authing?)                             |
 | `https://firebaselogging-pa.googleapis.com/v1/firelog/legacy/batchlog`                            | Firebase Logging                                                                                                                                     |
 
 ## Requests and Responses
+
+### `2023 recap video analytics`
+
+```
+{
+    "campaign-memoriesrecap2023": {
+        "key": "off",
+        "metadata": {
+            "default": true
+        }
+    },
+    "delhi-tagging-rollout-countries": {
+        "key": "on",
+        "value": "on"
+    },
+    "friend-recommendations-m2-ios": {
+        "key": "active-weighted",
+        "metadata": {
+            "experimentKey": "exp-2"
+        },
+        "payload": {
+            "fr-backend-variant": "active",
+            "fr-card-reshow": 10,
+            "fr-friend-threshold": 30,
+            "fr-recco-count": 5
+        },
+        "value": "active-weighted"
+    },
+    "ios-cairo-streaks": {
+        "key": "off",
+        "metadata": {
+            "default": true
+        }
+    },
+    "ios-chat-forwarding": {
+        "key": "treatment",
+        "metadata": {
+            "experimentKey": "exp-1"
+        },
+        "value": "treatment"
+    },
+    "ios-onboarding-revamp": {
+        "key": "new-flow",
+        "metadata": {
+            "experimentKey": "exp-2"
+        },
+        "payload": {
+            "notif": "old",
+            "order": "new"
+        },
+        "value": "new-flow"
+    },
+    "ios-pinned-memories": {
+        "key": "treatment",
+        "metadata": {
+            "experimentKey": "exp-1"
+        },
+        "value": "treatment"
+    },
+    "ios-sharing-cell": {
+        "key": "share-and-clean",
+        "metadata": {
+            "experimentKey": "exp-2"
+        },
+        "payload": {
+            "clean-cell": true,
+            "external-sharing": true
+        },
+        "value": "share-and-clean"
+    },
+    "ios-tagging": {
+        "key": "treatment",
+        "metadata": {
+            "experimentKey": "exp-1"
+        },
+        "value": "treatment"
+    },
+    "ios-tagging-resharing": {
+        "key": "off",
+        "metadata": {
+            "default": true
+        }
+    },
+    "ios-upload-perf-improvements": {
+        "key": "treatment",
+        "metadata": {
+            "experimentKey": "exp-2"
+        },
+        "value": "treatment"
+    },
+    "memories-entry-points-ios": {
+        "key": "navbar",
+        "metadata": {
+            "experimentKey": "exp-1"
+        },
+        "value": "navbar"
+    },
+    "sunset-survey-card": {
+        "key": "off",
+        "metadata": {
+            "default": true
+        }
+    },
+    "sunset-survey-card-prospect-cta": {
+        "key": "off",
+        "metadata": {
+            "default": true
+        }
+    },
+    "tagging-country-flag": {
+        "key": "on",
+        "value": "on"
+    }
+}
+```
 
 ### `unspecified`
 
