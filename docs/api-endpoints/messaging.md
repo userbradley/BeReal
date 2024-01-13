@@ -17,4 +17,3 @@ title: "API endpoint: messaging"
 | `https://ogma.bereal.team/chat.core.v1.ChatCoreService/GetSentInvites`          | GET invitations                |
 | `https://ogma.bereal.team/media.upload.v1.MediaUploadService/CreateUploadUrls`  | POST upload a BeReal in chat   |
 | `https://ogma.bereal.team/realtime.core.v1.RealTimeStreamService/Stream`        | GET new uploads                |
-
