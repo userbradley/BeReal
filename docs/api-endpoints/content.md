@@ -19,10 +19,7 @@ title: "API endpoint: Content"
 | `https://mobile.bereal.com/api/content/screenshots/me`       | Gets list of users who screenshot?                                                                                                                                              |
 | `https://mobile.bereal.com/api/content/unblurs`              | Gets the unblurs and ubnlurs a users post and how many they can unblur                                                                                                          |
 
-
-
 ## moments
-
 
 ## Verified Endpoints
 
