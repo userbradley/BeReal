@@ -19,13 +19,15 @@ title: "API endpoint: messaging"
 | `https://ogma.bereal.team/realtime.core.v1.RealTimeStreamService/Stream`        | GET new uploads                |
 
 ```
-gRPC message 0 (compressed False)
- [message]    1                               
- [message]    1.1                             
- [message]    1.1.1                           
- [string]     1.1.1.1  “ID”
- [message]    1.2                             
- [uint32]     1.2.1    1                      
- [string]     1.2.2    this is an exemple message
-
+{
+	gRPC message 0 (compressed False)
+ 		[message]    1                               
+ 		[message]    1.1                             
+ 		[message]    1.1.1                           
+ 		[string]     1.1.1.1  “ID”
+ 		[message]    1.2                             
+ 		[uint32]     1.2.1    1                      
+ 		[string]     1.2.2    this is an exemple message
+}
 ```
+
