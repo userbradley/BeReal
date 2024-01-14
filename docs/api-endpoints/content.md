@@ -19,32 +19,6 @@ title: "API endpoint: Content"
 | `https://mobile.bereal.com/api/content/screenshots/me`       | Gets list of users who screenshot?                                                                                                                                              |
 | `https://mobile.bereal.com/api/content/unblurs`              | Gets the unblurs and ubnlurs a users post and how many they can unblur                                                                                                          |
 
-## moments
-
-## Verified Endpoints
-
-| URL                                                             | Use           	 						  |                                                                                                                                         
-|-----------------------------------------------------------------|-------------------------------------------|
-| `https://mobile.bereal.com/api/bereal/moments/last/europe-west` | Gets last (eu) Bereal notification time   |
-
-## Requests and Responses
-
-Response
-
-```json
-{
-		"id": {
-			"NywegFScSAG83Fg4rugyI",
-		    "startDate":"2024-01-14T10:37:05.108Z",
-			"endDate":"2024-01-14T10:39:05.108Z",
-			"region":"europe-west",
-			"timezone":"Europe/Paris",
-			"localTime":"11:37",
-			"localDate":"2024-01-14"
-}
-
-```                                                                                                 
-
 ## Unverified Endpoints
 
 !!! note "We don't know if these endpoints still exist or are used"
