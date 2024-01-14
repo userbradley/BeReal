@@ -69,7 +69,7 @@ title: Sub Domains
 |-------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | `cdn.bereal.network`          | New CDN running on `MCI Communications Services, Inc. d/b/a Verizon Business`   pointing to `storage.bere.al` Bucket               |
 | `cdn-resize.bereal.network`   | Image optimization CDN																											 |
-| `cdn-c.bereal.network`        | NEW CDN      																													     |
+| `cdn-c.bereal.network`        | New CDN      																													     |
 | `cdn-goo.bereal.com`          | New CDN      																												         |
 | `cdn-c.bereal.network`        | New CDN 																												             |
 | `dev-cdn.bereal.network`      | Development CDN running on `MCI Communications Services, Inc. d/b/a Verizon Business` pointing to `sandbox-storage.bere.al` bucket |

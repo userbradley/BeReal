@@ -11,6 +11,7 @@ The endpoints are categorized as below
 * [Feeds](feeds.md)
 * [Moderation](moderation.md)
 * [Messaging](messaging.md)
+* [Helps](helps.md)
 * [Person](person.md)
 * [Relationships](relationships.md)
 * [Search](search.md)

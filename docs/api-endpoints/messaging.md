@@ -17,3 +17,15 @@ title: "API endpoint: messaging"
 | `https://ogma.bereal.team/chat.core.v1.ChatCoreService/GetSentInvites`          | GET invitations                |
 | `https://ogma.bereal.team/media.upload.v1.MediaUploadService/CreateUploadUrls`  | POST upload a BeReal in chat   |
 | `https://ogma.bereal.team/realtime.core.v1.RealTimeStreamService/Stream`        | GET new uploads                |
+
+```
+gRPC message 0 (compressed False)
+ [message]    1                               
+ [message]    1.1                             
+ [message]    1.1.1                           
+ [string]     1.1.1.1  “ID”
+ [message]    1.2                             
+ [uint32]     1.2.1    1                      
+ [string]     1.2.2    this is an exemple message
+
+```
