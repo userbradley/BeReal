@@ -26,7 +26,7 @@ title: "API endpoint: Content"
 | URL                                                             | Use           	 						  |                                                                                                                                         
 |-----------------------------------------------------------------|-------------------------------------------|
 | `https://mobile.bereal.com/api/bereal/moments/last/europe-west` | Gets last (eu) Bereal notification time   |
- 
+
 ## Requests and Responses
 
 Response
@@ -42,6 +42,7 @@ Response
 			"localTime":"11:37",
 			"localDate":"2024-01-14"
 }
+
 ```                                                                                                 
 
 ## Unverified Endpoints
