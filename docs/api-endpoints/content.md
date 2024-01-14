@@ -23,9 +23,9 @@ title: "API endpoint: Content"
 
 ## Verified Endpoints
 
-| URL                                                             | Use           	 						  |                                                                                                                                                                  
+| URL                                                             | Use           	 						  |                                                                                                                                         
 |-----------------------------------------------------------------|-------------------------------------------|
-| `https://mobile.bereal.com/api/bereal/moments/last/europe-west` | Gets last (eu) Bereal notification time   |  
+| `https://mobile.bereal.com/api/bereal/moments/last/europe-west` | Gets last (eu) Bereal notification time   |
  
 ## Requests and Responses
 
