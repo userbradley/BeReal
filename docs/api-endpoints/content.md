@@ -27,6 +27,8 @@ title: "API endpoint: Content"
 |-----------------------------------------------------------------|-------------------------------------------|
 | `https://mobile.bereal.com/api/bereal/moments/last/europe-west` | Gets last (eu) Bereal notification time   |  
  
+## Requests and Responses
+
 Response
 
 ```json
