@@ -10,6 +10,6 @@ jobs:
       pull-requests: write
     name: Assign users to Pull Requests
     steps:
-      - uses: kentaro-m/auto-assign-action@v1.2.5
+      - uses: kentaro-m/auto-assign-action@v1.2.6
         with:
           configuration-path: '.github/config/auto-assign.yml'
