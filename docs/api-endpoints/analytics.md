@@ -163,4 +163,41 @@ title: "API endpoint: Analytics"
         "version": "1.1.2",
         "version.build": "9854"
     },
+    {
+        "_dd": {
+            "device": {
+                "architecture": "arm64e"
+            }
+        },
+        "date": "2024-01-02T17:00:47.708Z",
+        "ddtags": "env:prod,version:1.21.2",
+        "error.kind": "HTTPError",
+        "error.message": "HTTPError {httpCode=none, category=network, cocoa=-1200, description='An SSL error has occurred and a secure connection to the server cannot be made.'}",
+        "error.stack": "HTTPError {httpCode=none, category=network, cocoa=-1200, description='An SSL error has occurred and a secure connection to the server cannot be made.'}",
+        "logger.name": "AlexisBarreyat.BeReal",
+        "logger.thread_name": "background",
+        "logger.version": "1.23.0",
+        "message": "[BAK] request : [GET] https://mobile.bereal.com/api/bereal/moments/last/europe-west ❌ \n error: HTTPError {httpCode=none, category=network, cocoa=-1200, description='An SSL error has occurred and a secure connection to the server cannot be made.'}",
+        "network.client.available_interfaces": [
+            "wifi",
+            "cellular"
+        ],
+        "network.client.is_constrained": false,
+        "network.client.is_expensive": false,
+        "network.client.reachability": "yes",
+        "network.client.sim_carrier.allows_voip": true,
+        "network.client.sim_carrier.iso_country": "--",
+        "network.client.sim_carrier.name": "--",
+        "network.client.sim_carrier.technology": "LTE",
+        "network.client.supports_ipv4": true,
+        "network.client.supports_ipv6": true,
+        "service": "AlexisBarreyat.BeReal",
+        "status": "error",
+        "usr.id": "ID",
+        "usr.region": {
+            "value": "europe-west"
+        },
+        "version": "1.21.2",
+        "version.build": "14123"
+    }
 ```
