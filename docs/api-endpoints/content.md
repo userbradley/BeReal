@@ -18,6 +18,8 @@ title: "API endpoint: Content"
 | `https://mobile.bereal.com/api/content/screenshots`          | Updates when you screenshot a post                                                                                                                                              |
 | `https://mobile.bereal.com/api/content/screenshots/me`       | Gets list of users who screenshot?                                                                                                                                              |
 | `https://mobile.bereal.com/api/content/unblurs`              | Gets the unblurs and ubnlurs a users post and how many they can unblur                                                                                                          |
+| `https://mobile.bereal.com/api/settings`                     | Gets the api settings																																							 |
+
 
 ## Unverified Endpoints
 
@@ -30,6 +32,43 @@ title: "API endpoint: Content"
 | `https://firebasestorage.googleapis.com/v0/b/storage.bere.al/o/`                         | Uploads the photo to Firebase from what I can see                                                      |
 
 ## Requests and Responses
+
+
+## api/settings
+
+```json
+{
+"mandatoryVersions":{
+"android": "1.15.0", "ios":"1.13.0"}
+, "recommendedVersions":{
+"android": "1.15.0", "ios":"1.19.1"}
+, "polling":{
+"feedsFriends": 5000, "moment":5000}
+, "storage":{
+"bucket":"gs://storage.bere.al"}
+, "cdn":{
+  "cdn.bereal.network":[
+	  {
+  "domain": "cdn.bereal.network", "weight":600}
+	  ,
+	  {
+  "domain": "cdn-cf.bereal.network", "weight":400}
+	  ,
+	  {
+  "domain": "cdn-mc-eu1-fd5f74b2.bereal.network", "weight":10}
+  ], "cdn-resize.bereal.network":[
+	  {
+  "domain": "cdn-resized-2.bereal.network", "weight":500}
+	  ,
+	  {
+  "domain": "cdn-resize.bereal.network", "weight":100}
+  ]}
+, "bts":{
+"maxLength":6.42}
+, "officialAccounts":{
+"maxFollows": 42, "maxNotifications":42}
+}
+```
 
 ### content/post
 
